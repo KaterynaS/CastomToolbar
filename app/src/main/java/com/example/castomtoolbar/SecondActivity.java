@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,25 +14,17 @@ import androidx.appcompat.widget.Toolbar;
 
 public class SecondActivity extends AppCompatActivity {
 
-    Button mainActivity;
     Toolbar toolbarSecond;
 
     Button addOne;
     int counter;
 
+    Menu toolbarMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-
-        mainActivity = findViewById(R.id.main_activity_button);
-        mainActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent main = new Intent(SecondActivity.this, MainActivity.class);
-                startActivity(main);
-            }
-        });
 
         toolbarSecond = (Toolbar) findViewById(R.id.bar_of_tools);
         setSupportActionBar(toolbarSecond);
@@ -44,12 +37,20 @@ public class SecondActivity extends AppCompatActivity {
             public void onClick(View v) {
                 counter++;
                 Log.d("addOne", "counter = " + counter);
+                updateStepCounter();
             }
         });
     }
 
+    private void updateStepCounter() {
+        MenuItem stepCounter = toolbarMenu.findItem(R.id.counter);
+        String s = "Steps: " + counter;
+        stepCounter.setTitle(s);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        toolbarMenu = menu;
         getMenuInflater().inflate(R.menu.menu_second, menu);
         return true;
     }
