@@ -1,17 +1,15 @@
 package com.example.castomtoolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ToolbarActivity {
 
-    Button secondActivity;
+    Button gameButton;
     Toolbar toolbarMain;
 
     @Override
@@ -19,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        secondActivity = findViewById(R.id.second_activity);
-        secondActivity.setOnClickListener(new View.OnClickListener() {
+        gameButton = findViewById(R.id.game_button);
+        gameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent second = new Intent(MainActivity.this, SecondActivity.class);
+                Intent second = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(second);
             }
         });
@@ -33,8 +31,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public int getMenuResourceID() {
+        return R.menu.menu_main;
+    }
+
+    @Override
+    public void restartGame() {
+
     }
 }

@@ -9,16 +9,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondActivity"
-            android:parentActivityName=".MainActivity"
-            android:label="game"></activity>
-        <activity android:name=".MainActivity">
+
+
+        <activity android:name=".MainActivity"
+            android:label="Kawai Towers"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".HelpActivity"
+            android:label="Kawai Help"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape">
+        </activity>
+
+
+        <activity
+            android:name=".GameActivity"
+            android:label="Kawai Game"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape" />
+
+
+
+        <activity android:name=".ToolbarActivity"
+            android:screenOrientation="landscape"/>
+
     </application>
 
 </manifest>

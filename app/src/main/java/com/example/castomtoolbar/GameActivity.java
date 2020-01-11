@@ -1,21 +1,18 @@
 package com.example.castomtoolbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
-public class SecondActivity extends AppCompatActivity {
+public class GameActivity extends ToolbarActivity {
 
-    Toolbar toolbarSecond;
-
+    Toolbar toolbarGame;
     Button addOne;
     int counter;
 
@@ -24,10 +21,10 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
+        setContentView(R.layout.activity_game);
 
-        toolbarSecond = (Toolbar) findViewById(R.id.bar_of_tools);
-        setSupportActionBar(toolbarSecond);
+        toolbarGame = (Toolbar) findViewById(R.id.bar_of_tools);
+        setSupportActionBar(toolbarGame);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -43,15 +40,20 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void updateStepCounter() {
-        MenuItem stepCounter = toolbarMenu.findItem(R.id.counter);
+        toolbarMenu = toolbarGame.getMenu();
+        MenuItem stepCounter = toolbarMenu.findItem(R.id.counter_menu_item);
         String s = "Steps: " + counter;
         stepCounter.setTitle(s);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        toolbarMenu = menu;
-        getMenuInflater().inflate(R.menu.menu_second, menu);
-        return true;
+    public int getMenuResourceID() {
+        return R.menu.menu_game;
+    }
+
+    @Override
+    public void restartGame() {
+        counter = 0;
+        updateStepCounter();
     }
 }
