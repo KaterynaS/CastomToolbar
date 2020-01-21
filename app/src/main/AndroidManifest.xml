@@ -24,11 +24,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HelpActivity"
-            android:label="Kawai Help"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".GameActivity"
             android:label="Kawai Game"
             android:parentActivityName=".MainActivity"

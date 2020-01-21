@@ -7,20 +7,61 @@
     tools:context=".GameActivity">
 
 
+    <!-- poles containers -->
     <include
         android:id="@+id/bar_of_tools"
-        layout="@layout/tools"/>
-
-
-    <Button
-        android:id="@+id/add_one_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="+1"
-        android:textSize="40sp"
+        layout="@layout/tools"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bar_of_tools" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/poles_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="25dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bar_of_tools">
+
+        <LinearLayout
+            android:id="@+id/start_pole_ll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/line_vertical"
+            android:gravity="bottom"
+            android:orientation="vertical"></LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/help_pole_ll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/line_vertical"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/target_pole_ll"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/line_vertical"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

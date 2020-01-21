@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,8 +26,8 @@ public abstract class ToolbarActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     Menu mainMenu;
-    MenuItem finger;
     int menuResourceID;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,39 +53,6 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         //todo open help slider https://www.javatpoint.com/android-introduction-slider-example
         Intent welcome = new Intent(getApplicationContext(), WelcomeActivity.class);
         startActivity(welcome);
-
-
-
-        //popup window
-        // inflate the layout of the popup window
-//        LayoutInflater inflater = (LayoutInflater)
-//                getSystemService(LAYOUT_INFLATER_SERVICE);
-//        View popupView = inflater.inflate(R.layout.popup_window, null);
-//
-//        // create the popup window
-//        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-//        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-//        boolean focusable = true; // lets taps outside the popup also dismiss it
-//        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-//
-//        // show the popup window
-//        // which view you pass in doesn't matter, it is only used for the window tolken
-//        View view = findViewById(R.id.bar_of_tools);
-//        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-//
-//
-//        // dismiss the popup window when touched
-//        popupView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                popupWindow.dismiss();
-//                return true;
-//            }
-//        });
-    }
-
-    public void onButtonShowPopupWindowClick(View view) {
-
     }
 
     public abstract int getMenuResourceID();
@@ -102,12 +70,24 @@ public abstract class ToolbarActivity extends AppCompatActivity {
                 restartGame();
                 break;
             case  R.id.close_menu_item:
-                closeHelp();
+                //closeHelp();
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void updateStepsCounterTextview() {
+        //todo move it to toolbar class
+        MenuItem counterMenuItem = mainMenu.findItem(R.id.counter_menu_item);
+
+        AppState appState = AppState.getInstance();
+
+        String steps = "Steps: " + appState.getStepsTaken();
+//        Toast.makeText(getApplicationContext(), steps,
+//                Toast.LENGTH_SHORT).show();
+        counterMenuItem.setTitle(steps);
     }
 
     public void closeHelp()
@@ -137,6 +117,5 @@ public abstract class ToolbarActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "sound " + soundStatus,
                 Toast.LENGTH_SHORT).show();
-
     }
 }
