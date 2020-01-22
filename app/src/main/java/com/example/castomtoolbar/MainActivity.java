@@ -28,7 +28,7 @@ public class MainActivity extends ToolbarActivity {
         setContentView(R.layout.activity_main);
 
         //toolbar
-        toolbarMain = (Toolbar) findViewById(R.id.bar_of_tools);
+        toolbarMain = findViewById(R.id.bar_of_tools);
         setSupportActionBar(toolbarMain);
 
         //building pyramid

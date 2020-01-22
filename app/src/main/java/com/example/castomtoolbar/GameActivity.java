@@ -3,6 +3,7 @@ package com.example.castomtoolbar;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +36,15 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
     Toolbar toolbarGame;
 
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String BEST_RESULT_3_DISCS = "steps3";
+    public static final String BEST_RESULT_4_DISCS = "steps4";
+    public static final String BEST_RESULT_5_DISCS = "steps5";
+    public static final String BEST_RESULT_6_DISCS = "steps6";
+    public static final String BEST_RESULT_7_DISCS = "steps7";
+
+    private int currentGameBestResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +52,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         appState = AppState.getInstance();
 
-        toolbarGame = (Toolbar) findViewById(R.id.bar_of_tools);
+        toolbarGame = findViewById(R.id.bar_of_tools);
         setSupportActionBar(toolbarGame);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,8 +66,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         createTower();
     }
 
-    private void createTower()
-    {
+    private void createTower() {
         GameAttributes ga = new GameAttributes();
         //fill starting pole with corresponding amount of disks
         for (int i = appState.getNumberOfDisks()-1; i >= 0; i--) {
@@ -98,7 +107,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
     }
 
-
     private boolean isOnTop(View view) {
         boolean onTop = false;
 
@@ -115,7 +123,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
         return onTop;
     }
-
 
     private void wrongMoveAction() {
         Toast.makeText(context, R.string.cant_move_item, Toast.LENGTH_SHORT).show();
@@ -136,7 +143,13 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
     private void victoryAction() {
 
-        String message = getString(R.string.congrat_message);
+        saveResult();
+
+        String bestResult = "\nBest result: " + getBestResult() + " steps";
+
+        String yourResult = "\nYour result: " + appState.getStepsTaken() + " steps";
+
+        String message = getString(R.string.congrat_message) + yourResult + bestResult;
 
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setMessage(message)
@@ -231,7 +244,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         targetPole.setTag("target");
     }
 
-
     @Override
     public int getMenuResourceID() {
         return R.menu.menu_game;
@@ -262,11 +274,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             case DragEvent.ACTION_DRAG_STARTED:
             {
                 // Determines if this View can accept the dragged data
-                if (event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN))
-                {
-                    return true;
-                }
-                return false;
+                return event.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN);
             }
             case DragEvent.ACTION_DRAG_ENTERED:
             {
@@ -356,6 +364,86 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             }
         }
         return false;
+    }
+
+    public void saveResult() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        //todo save steps depending on discs number
+//
+//        editor.putInt()
+//        editor.putString(TEXT, textView.getText().toString());
+//        editor.putBoolean(SWITCH1, switch1.isChecked());
+
+
+        switch (appState.getNumberOfDisks()) {
+            case 3:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_3_DISCS, 0);
+                if (currentGameBestResult == 0 || currentGameBestResult > appState.getStepsTaken())
+                {
+                    editor.putInt(BEST_RESULT_3_DISCS, appState.getStepsTaken());
+                }
+                break;
+            case 4:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_4_DISCS, 0);
+                if (currentGameBestResult == 0 || currentGameBestResult > appState.getStepsTaken())
+                {
+                    editor.putInt(BEST_RESULT_4_DISCS, appState.getStepsTaken());
+                }
+                break;
+            case 5:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_5_DISCS, 0);
+                if (currentGameBestResult == 0 || currentGameBestResult > appState.getStepsTaken())
+                {
+                    editor.putInt(BEST_RESULT_5_DISCS, appState.getStepsTaken());
+                }
+                break;
+            case 6:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_6_DISCS, 0);
+                if (currentGameBestResult == 0 || currentGameBestResult > appState.getStepsTaken())
+                {
+                    editor.putInt(BEST_RESULT_6_DISCS, appState.getStepsTaken());
+                }
+                break;
+            case 7:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_7_DISCS, 0);
+                if (currentGameBestResult == 0 || currentGameBestResult > appState.getStepsTaken())
+                {
+                    editor.putInt(BEST_RESULT_7_DISCS, appState.getStepsTaken());
+                }
+                break;
+            default:
+                break;
+        }
+
+        editor.apply();
+        Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
+    }
+
+    public int getBestResult() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        switch (appState.getNumberOfDisks()) {
+            case 3:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_3_DISCS, 0);
+                break;
+            case 4:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_4_DISCS, 0);
+                break;
+            case 5:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_5_DISCS, 0);
+                break;
+            case 6:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_6_DISCS, 0);
+                break;
+            case 7:
+                currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_7_DISCS, 0);
+                break;
+            default:
+                break;
+        }
+
+        return currentGameBestResult;
     }
 
 }

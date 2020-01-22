@@ -2,25 +2,12 @@ package com.example.castomtoolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.MediaPlayer;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public abstract class ToolbarActivity extends AppCompatActivity {
 
@@ -51,7 +38,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
     public void openHelpPage()
     {
         //todo open help slider https://www.javatpoint.com/android-introduction-slider-example
-        Intent welcome = new Intent(getApplicationContext(), WelcomeActivity.class);
+        Intent welcome = new Intent(getApplicationContext(), RulesActivity.class);
         startActivity(welcome);
     }
 

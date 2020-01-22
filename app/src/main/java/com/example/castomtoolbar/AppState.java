@@ -42,8 +42,7 @@ public class AppState {
 
     public void turnSound()
     {
-        if(soundOn) { soundOn = false; }
-        else { soundOn = true; }
+        soundOn = !soundOn;
     }
 
     public boolean isSoundOn() {

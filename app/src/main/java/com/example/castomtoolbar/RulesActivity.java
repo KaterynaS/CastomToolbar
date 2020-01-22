@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class RulesActivity extends AppCompatActivity {
 
 
     private ViewPager viewPager;
@@ -47,10 +47,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_rules);
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
-        dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
-        btnSkip = (Button) findViewById(R.id.btn_skip);
-        btnNext = (Button) findViewById(R.id.btn_next);
+        viewPager = findViewById(R.id.view_pager);
+        dotsLayout = findViewById(R.id.layoutDots);
+        btnSkip = findViewById(R.id.btn_skip);
+        btnNext = findViewById(R.id.btn_next);
 
 
         // layouts of welcome sliders
@@ -100,8 +100,8 @@ public class WelcomeActivity extends AppCompatActivity {
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("?"));
-            dots[i].setTextSize(35);
+            dots[i].setText(Html.fromHtml(" :"));
+            dots[i].setTextSize(45);
             dots[i].setTextColor(colorsInactive[currentPage]);
             dotsLayout.addView(dots[i]);
         }
@@ -120,7 +120,7 @@ public class WelcomeActivity extends AppCompatActivity {
         // Should exit to the activity from which help button was pressed.
         // 1) startActivityForResult ?
         //prefManager.setFirstTimeLaunch(false);
-//        startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+//        startActivity(new Intent(RulesActivity.this, MainActivity.class));
 //        finish();
 
         getOnBackPressedDispatcher();

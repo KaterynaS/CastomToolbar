@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">CastomToolbar</string>
-
+    <string name="app_name">Kawai Towers</string>
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -13,6 +12,5 @@
     <string name="slide_2_desc">Android is a mobile operating system developed by Google.</string>
     <string name="cant_move_item">can\'t move item</string>
     <string name="congrat_message">Congratulations!</string>
-
 
 </resources>
