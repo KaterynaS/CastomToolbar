@@ -2,6 +2,7 @@ package com.example.castomtoolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ public class MainActivity extends ToolbarActivity {
 
     Button gameButton;
     Toolbar toolbarMain;
+    AppState appState;
 
 
     //building pyramid
@@ -27,8 +29,18 @@ public class MainActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        appState = AppState.getInstance();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenHeight = displayMetrics.heightPixels;
+        int screenWidth = displayMetrics.widthPixels;
+
+        appState.setScreenHeight(screenHeight);
+        appState.setScreenWidth(screenWidth);
+
+
         //toolbar
-        toolbarMain = findViewById(R.id.bar_of_tools);
+        toolbarMain = findViewById(R.id.toolbar_widget).findViewById(R.id.toolbar_widget);
         setSupportActionBar(toolbarMain);
 
         //building pyramid

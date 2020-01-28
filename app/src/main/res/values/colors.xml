@@ -15,7 +15,11 @@
     <!-- dots active colors -->
     <color name="dot_light_screen1">#8de7f9</color>
     <color name="dot_light_screen2">#8cf9eb</color>
-    <color name="toolbar_color">#FB8C00</color>
+
+
+    <color name="toolbar_color">#f5e7b1</color>
+    <color name="toolbar_text_color">#D0EFDD</color>
+    <color name="toolbar_icon_color">#D0EFDD</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>
@@ -26,5 +30,8 @@
         <item>@color/dot_dark_screen1</item>
         <item>@color/dot_dark_screen2</item>
     </array>
+
+
+    <color name="background_blue">#99e3ff</color>
 
 </resources>

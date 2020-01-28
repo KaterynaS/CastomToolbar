@@ -29,8 +29,8 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         if(mainMenu.findItem(R.id.sound_menu_item) != null)
         {
             MenuItem soundMenuItem = mainMenu.findItem(R.id.sound_menu_item);
-            if(appState.isSoundOn()) { soundMenuItem.setIcon(R.drawable.ic_sound_on); }
-            else { soundMenuItem.setIcon(R.drawable.ic_sound_off); }
+            if(appState.isSoundOn()) { soundMenuItem.setIcon(R.drawable.ico_music_90x90); }
+            else { soundMenuItem.setIcon(R.drawable.ico_music_mute_90x90); }
         }
         return true;
     }

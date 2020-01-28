@@ -3,11 +3,11 @@
 
     <item
         android:state_activated="false"
-        android:drawable="@drawable/ic_sound_off" />
+        android:drawable="@drawable/ico_music_mute_90x90" />
 
     <item
         android:state_activated="true"
-        android:drawable="@drawable/ic_sound_on" />
+        android:drawable="@drawable/ico_music_90x90" />
 
 
 </selector>

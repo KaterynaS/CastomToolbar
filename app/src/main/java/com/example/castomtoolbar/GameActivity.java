@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.DragEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +50,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         appState = AppState.getInstance();
 
-        toolbarGame = findViewById(R.id.bar_of_tools);
+        toolbarGame = findViewById(R.id.toolbar_widget);
         setSupportActionBar(toolbarGame);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -72,8 +70,22 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         for (int i = appState.getNumberOfDisks()-1; i >= 0; i--) {
             //create an text view of a disk, starting with the biggest
 
-            ImageView imageDisk = new ImageView(getApplicationContext());
+            final ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
+
+//
+//        if(appState.getScreenWidth() <= 1000)
+//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForMiniScreens[i])); }
+//            else if (appState.getScreenWidth() < 1366)
+//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens683to1000[i])); }
+//            else if (appState.getScreenWidth() < 2050)
+//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens1000to1366[i])); }
+//            else if (appState.getScreenWidth() >= 2050)
+//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens1367to2050[i])); }
+////            else if (appState.getScreenWidth() >= 2050)
+////            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens2050andMore[i])); }
+//
+
             imageDisk.setTag(""+i);
 
             imageDisk.setOnTouchListener(new MyTouchListener());

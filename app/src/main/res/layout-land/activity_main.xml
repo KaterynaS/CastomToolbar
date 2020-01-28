@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
 
@@ -34,7 +35,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/line_vertical"
             android:gravity="bottom"
             android:orientation="vertical"></LinearLayout>
 

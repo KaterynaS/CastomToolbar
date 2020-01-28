@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light">
+    android:background="@color/background_blue">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -13,10 +13,9 @@
         android:gravity="center_horizontal">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="257dp"
-            android:layout_margin="30dp"
-            android:src="@drawable/forest" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tutorial_1" />
 
 
         <TextView

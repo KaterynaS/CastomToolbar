@@ -5,6 +5,8 @@ public class AppState {
     boolean soundOn = true;
     int numberOfDisks;
     int stepsTaken = 0;
+    private int screenWidth;
+    private int screenHeight;
 
 
     private AppState() {
@@ -48,5 +50,23 @@ public class AppState {
     public boolean isSoundOn() {
         return soundOn;
     }
+
+
+    public int getScreenWidth() {
+        return screenWidth;
+    }
+
+    public void setScreenWidth(int screenWidth) {
+        this.screenWidth = screenWidth;
+    }
+
+    public int getScreenHeight() {
+        return screenHeight;
+    }
+
+    public void setScreenHeight(int screenHeight) {
+        this.screenHeight = screenHeight;
+    }
+
 
 }
