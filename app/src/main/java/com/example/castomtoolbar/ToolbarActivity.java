@@ -85,6 +85,8 @@ public abstract class ToolbarActivity extends AppCompatActivity {
 
     public abstract void restartGame();
 
+
+    //todo the only place in code where sound images are taken from
     private void turnSound() {
         AppState appState = AppState.getInstance();
         appState.turnSound();
@@ -94,12 +96,12 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         if(appState.isSoundOn())
         {
             soundStatus = "on";
-            soundMenuItem.setIcon(R.drawable.ic_sound_on);
+            soundMenuItem.setIcon(R.drawable.ico_music_90x90);
         }
         else
         {
             soundStatus = "off";
-            soundMenuItem.setIcon(R.drawable.ic_sound_off);
+            soundMenuItem.setIcon(R.drawable.ico_music_mute_90x90);
         }
 
         Toast.makeText(getApplicationContext(), "sound " + soundStatus,

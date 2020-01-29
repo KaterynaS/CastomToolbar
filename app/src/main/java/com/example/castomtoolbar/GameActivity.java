@@ -86,6 +86,16 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 ////            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens2050andMore[i])); }
 //
 
+            int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.3 - 16);
+            int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.7 - 48)/7;
+            Log.d("updateDiskPyramid", "\nmaxDiscWidthInPx = " + maxDiscWidthInPx
+                    + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
+
+            LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
+            imageDisk.setLayoutParams(diskParams);
+
+
+
             imageDisk.setTag(""+i);
 
             imageDisk.setOnTouchListener(new MyTouchListener());

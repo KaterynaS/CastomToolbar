@@ -18,7 +18,7 @@
 
 
     <color name="toolbar_color">#f5e7b1</color>
-    <color name="toolbar_text_color">#D0EFDD</color>
+    <color name="toolbar_text_color">#814517</color>
     <color name="toolbar_icon_color">#D0EFDD</color>
 
     <array name="array_dot_active">
