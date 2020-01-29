@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".GameActivity">
-
 
 
     <include
@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- poles containers -->
-
 
     <LinearLayout
         android:id="@+id/poles_container"
@@ -36,7 +35,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/line_vertical"
             android:gravity="bottom"
             android:orientation="vertical"></LinearLayout>
 
@@ -46,7 +44,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/line_vertical"
             android:gravity="bottom"
             android:orientation="vertical">
 
@@ -58,7 +55,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/line_vertical"
             android:gravity="bottom"
             android:orientation="vertical">
 

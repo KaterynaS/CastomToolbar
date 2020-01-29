@@ -18,9 +18,10 @@
 
     <LinearLayout
         android:id="@+id/pyramid_builder_container"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginLeft="16dp"
+        android:gravity="bottom|center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_middle"
@@ -33,13 +34,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
-
-
+            android:gravity="bottom|center_horizontal"
+            android:orientation="vertical"/>
 
     </LinearLayout>
 
@@ -66,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.59" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_right"
