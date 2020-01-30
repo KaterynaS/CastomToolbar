@@ -3,6 +3,8 @@ package com.example.castomtoolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -18,6 +20,9 @@ public abstract class ToolbarActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        upArrow.setColorFilter(getResources().getColor(R.color.toolbar_text_color), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
 
         menuResourceID = getMenuResourceID();
         mainMenu = menu;
@@ -56,9 +61,6 @@ public abstract class ToolbarActivity extends AppCompatActivity {
             case R.id.restart_menu_item:
                 restartGame();
                 break;
-            case  R.id.close_menu_item:
-                //closeHelp();
-                break;
             default:
                 break;
         }
@@ -72,15 +74,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         AppState appState = AppState.getInstance();
 
         String steps = "Steps: " + appState.getStepsTaken();
-//        Toast.makeText(getApplicationContext(), steps,
-//                Toast.LENGTH_SHORT).show();
         counterMenuItem.setTitle(steps);
-    }
-
-    public void closeHelp()
-    {
-        //todo
-        // onBackPressed();
     }
 
     public abstract void restartGame();
@@ -92,19 +86,14 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         appState.turnSound();
 
         MenuItem soundMenuItem = mainMenu.findItem(R.id.sound_menu_item);
-        String soundStatus = "";
         if(appState.isSoundOn())
         {
-            soundStatus = "on";
             soundMenuItem.setIcon(R.drawable.ico_music_90x90);
         }
         else
         {
-            soundStatus = "off";
             soundMenuItem.setIcon(R.drawable.ico_music_mute_90x90);
         }
 
-        Toast.makeText(getApplicationContext(), "sound " + soundStatus,
-                Toast.LENGTH_SHORT).show();
     }
 }

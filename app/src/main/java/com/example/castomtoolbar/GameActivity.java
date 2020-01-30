@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.Guideline;
 
 public class GameActivity extends ToolbarActivity implements View.OnDragListener {
 
@@ -33,6 +35,11 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     LinearLayout targetPole;
 
     Toolbar toolbarGame;
+
+    Guideline guidelineHorizontalTop;
+    Guideline guidelineHorizontalBottom;
+    Guideline guidelineVerticalLeft;
+    Guideline guidelineVerticalRight;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String BEST_RESULT_3_DISCS = "steps3";
@@ -73,28 +80,15 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             final ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
 
-//
-//        if(appState.getScreenWidth() <= 1000)
-//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForMiniScreens[i])); }
-//            else if (appState.getScreenWidth() < 1366)
-//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens683to1000[i])); }
-//            else if (appState.getScreenWidth() < 2050)
-//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens1000to1366[i])); }
-//            else if (appState.getScreenWidth() >= 2050)
-//            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens1367to2050[i])); }
-////            else if (appState.getScreenWidth() >= 2050)
-////            { imageDisk.setImageDrawable(getResources().getDrawable(ga.discsForScreens2050andMore[i])); }
-//
-
-            int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.3 - 16);
-            int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.7 - 48)/7;
+            int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.3 - 16); //16 is a left margin
+            int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.7 - 48)/8; //48 is a toolbar height
             Log.d("updateDiskPyramid", "\nmaxDiscWidthInPx = " + maxDiscWidthInPx
                     + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
 
+
+
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
             imageDisk.setLayoutParams(diskParams);
-
-
 
             imageDisk.setTag(""+i);
 
@@ -102,6 +96,34 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
             //add view to the pole
             startPole.addView(imageDisk,0);
+
+
+            //"measure" the pyramid and adjust target fruit height
+            int pyramidHeight = maxDiscHeightInPx * appState.getNumberOfDisks();
+            int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
+
+            Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
+            Log.d("measurements", "\npyramidHeight in px = " + pyramidHeight
+                    + "\npyramidHeightInPercentsOfScreenHeight = " + pyramidHeightInPercentsOfScreenHeight);
+
+            guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
+            ConstraintLayout.LayoutParams guidelineHorizontalBottomParams =
+                    (ConstraintLayout.LayoutParams) guidelineHorizontalBottom.getLayoutParams();
+
+
+            float guidelineHorizontalBottomHeightInPercents = guidelineHorizontalBottomParams.guidePercent;
+            Log.d("measurements", "\nguidelineHorizontalBottomHeightInPercents = " + guidelineHorizontalBottomHeightInPercents);
+
+            float newTopGuidlineHeight = (guidelineHorizontalBottomHeightInPercents*100 - pyramidHeightInPercentsOfScreenHeight)/100;
+
+            Log.d("measurements", "\nnewTopGuidlineHeight % = " + newTopGuidlineHeight);
+
+            guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guidelineHorizontalTop.getLayoutParams();
+            params.guidePercent = newTopGuidlineHeight; // 45% // range: 0 <-> 1
+            guidelineHorizontalTop.setLayoutParams(params);
+
+
             appState.resetSteps();
             //todo updateStepCount
         }
@@ -147,7 +169,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     }
 
     private void wrongMoveAction() {
-        Toast.makeText(context, R.string.cant_move_item, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, R.string.cant_move_item, Toast.LENGTH_SHORT).show();
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 // Vibrate for 400 milliseconds
@@ -440,7 +462,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
 
         editor.apply();
-        Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
     }
 
     public int getBestResult() {

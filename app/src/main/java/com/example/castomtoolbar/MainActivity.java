@@ -79,7 +79,6 @@ public class MainActivity extends ToolbarActivity {
                 addDisk();
             }
         });
-
         subtractDiskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,9 +135,6 @@ public class MainActivity extends ToolbarActivity {
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
             imageDisk.setLayoutParams(diskParams);
 
-
-            //imageDisk.setOnLongClickListener(this);
-
             //add view to the pole
             poleLinearLayout.addView(imageDisk,0);
         }
@@ -149,9 +145,5 @@ public class MainActivity extends ToolbarActivity {
         subtractDiskButton = findViewById(R.id.subtruct_disk_button);
         poleLinearLayout = findViewById(R.id.pole_linear_layout);
     }
-
-
-
-
 
 }

@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.castomtoolbar">
 
-    //all the artwork made by Iana Fedotova
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -15,8 +13,9 @@
         android:roundIcon="@drawable/kawai_2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RulesActivity"
-            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".RulesActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".MainActivity"
             android:label="Kawai Towers"
@@ -34,7 +33,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".ToolbarActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:theme="@style/ToolbarTheme" />
 
         <meta-data
             android:name="preloaded_fonts"

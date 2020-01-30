@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="257dp"
             android:layout_margin="30dp"
-            android:src="@drawable/forest" />
+            android:src="@drawable/tutorial_3" />
 
 
         <TextView
