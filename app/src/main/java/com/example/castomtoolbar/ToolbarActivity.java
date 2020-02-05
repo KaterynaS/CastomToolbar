@@ -20,10 +20,6 @@ public abstract class ToolbarActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
-        upArrow.setColorFilter(getResources().getColor(R.color.toolbar_text_color), PorterDuff.Mode.SRC_ATOP);
-        getSupportActionBar().setHomeAsUpIndicator(upArrow);
-
         menuResourceID = getMenuResourceID();
         mainMenu = menu;
 
@@ -53,7 +49,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.help_menu_item:
-                openHelpPage(); //Is this a good way to do it? Yes, here it's okey!
+                openHelpPage();
                 break;
             case R.id.sound_menu_item:
                 turnSound();

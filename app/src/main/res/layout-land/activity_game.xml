@@ -4,18 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/bg_main"
     tools:context=".GameActivity">
 
-
-    <ImageView
-        android:id="@+id/target_2_imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right"
-        app:srcCompat="@drawable/target_strawberry" />
 
     <include
         android:id="@+id/toolbar_widget"
@@ -26,11 +17,6 @@
 
 
     <!-- poles containers -->
-
-
-
-
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_left"
         android:layout_width="wrap_content"
@@ -38,12 +24,28 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.333" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.666" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_left_of_right_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_right_of_right_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.92" />
 
     <LinearLayout
         android:id="@+id/start_pole_ll"
@@ -54,11 +56,12 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_left"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_top">
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_top"
+        app:layout_constraintVertical_bias="1.0">
 
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/target_pole_ll"
@@ -70,7 +73,13 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
-        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_top"></LinearLayout>
+        app:layout_constraintTop_toTopOf="@+id/guideline_horizontal_top">
+
+
+    </LinearLayout>
+
+
+
 
     <LinearLayout
         android:id="@+id/help_pole_ll"
@@ -99,6 +108,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="-3dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -113,6 +123,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="-2dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -127,6 +138,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="-5dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -144,31 +156,26 @@
 
     <ImageView
         android:id="@+id/target_1_imageview"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:foregroundGravity="bottom|center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
-        app:srcCompat="@drawable/target_strawberry" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_widget"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/treat_cloud_donat" />
 
-    <TextView
-        android:id="@+id/string_1"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:background="@color/toolbar_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/target_1_imageview"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_widget" />
 
-    <TextView
-        android:id="@+id/string2"
-        android:layout_width="1dp"
-        android:layout_height="0dp"
-        android:background="@color/toolbar_text_color"
-        app:layout_constraintBottom_toTopOf="@+id/target_2_imageview"
+    <ImageView
+        android:id="@+id/target_2_imageview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_widget" />
+        app:srcCompat="@drawable/treat_cloud_icecream" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

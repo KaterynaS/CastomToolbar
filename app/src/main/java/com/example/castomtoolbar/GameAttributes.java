@@ -3,6 +3,7 @@ package com.example.castomtoolbar;
 public class GameAttributes {
 
     int[] disksImgResourcesList;
+    int[] targetImgResourceList;
 
 
     public GameAttributes() {
@@ -12,5 +13,11 @@ public class GameAttributes {
                 R.drawable.kawai_5, R.drawable.kawai_6,
                 R.drawable.kawai_7};
 
+        targetImgResourceList = new int[]{
+                R.drawable.treat_cloud_donat,
+                R.drawable.treat_cloud_icecream,
+                R.drawable.treat_cloud_strawberry,
+                R.drawable.treat_cloud_watermelon
+        };
     }
 }

@@ -5,26 +5,25 @@
     <item
         android:id="@+id/counter_menu_item"
         android:checkable="true"
-        android:tooltipText="Steps: 0"
         app:showAsAction="always"
-        android:title="Steps: 0"/>
+        android:title="Moves: 0"/>
 
     <item
         android:id="@+id/help_menu_item"
         android:icon="@drawable/ico_instructions_90x90"
         app:showAsAction="always"
-        android:title="help"/>
+        android:title="Help"/>
 
     <item
         android:id="@+id/sound_menu_item"
         android:icon="@drawable/ico_music_90x90"
         app:showAsAction="always"
-        android:title="help"/>
+        android:title="Sound"/>
 
     <item
         android:id="@+id/restart_menu_item"
         android:icon="@drawable/ico_restart_90x90"
         app:showAsAction="always"
-        android:title="restart game"/>
+        android:title="Restart game"/>
 
 </menu>

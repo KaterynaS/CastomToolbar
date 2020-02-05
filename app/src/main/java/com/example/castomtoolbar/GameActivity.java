@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -16,23 +15,30 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class GameActivity extends ToolbarActivity implements View.OnDragListener {
 
     AppState appState;
 
     Context context;
-    MediaPlayer mp;
+    MediaPlayer woohooSoundMediaPlayer;
+    MediaPlayer uhahSoundMediaPlayer;
 
     LinearLayout startPole;
     LinearLayout helpPole;
     LinearLayout targetPole;
+
+    ImageView targetSlot1;
+    ImageView targetSlot2;
 
     Toolbar toolbarGame;
 
@@ -61,14 +67,55 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         setSupportActionBar(toolbarGame);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.btn_back);
 
-        mp = MediaPlayer.create(this, R.raw.sound_click);
+        woohooSoundMediaPlayer = MediaPlayer.create(this, R.raw.cartoon_woohoo);
+        uhahSoundMediaPlayer = MediaPlayer.create(this, R.raw.uh_oh);
         context = GameActivity.this;
 
         findViews();
 
+        placeTargets();
+
         setOnListeners();
         createTower();
+    }
+
+    private void placeTargets() {
+
+        targetSlot1 = findViewById(R.id.target_1_imageview);
+        targetSlot2 = findViewById(R.id.target_2_imageview);
+
+        //choose randomly from target list
+
+        GameAttributes ga = new GameAttributes();
+
+        ArrayList<Integer> targetIndexes = new ArrayList<>();
+        for (int i = 0; i < ga.targetImgResourceList.length; i++) {
+            targetIndexes.add(i);
+        }
+
+        Random rand = new Random();
+        int targetOneIndex = rand.nextInt(targetIndexes.size());
+        targetIndexes.remove(targetOneIndex);
+        int targetTwoIndex = targetIndexes.get(rand.nextInt(targetIndexes.size()));
+
+        Log.d("placeTargets", "\ntargetOneIndex = " + targetOneIndex
+            + "\ntargetTwoIndex = " + targetTwoIndex);
+
+        int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.7 - 48)/8;
+
+        ConstraintLayout.LayoutParams targetOneLayoutParams = (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
+        targetOneLayoutParams.height = maxDiscHeightInPx;
+        targetSlot1.setLayoutParams(targetOneLayoutParams);
+        targetSlot1.setImageDrawable(getResources().getDrawable(ga.targetImgResourceList[targetOneIndex]));
+
+
+        ConstraintLayout.LayoutParams targetTwoLayoutParams = (ConstraintLayout.LayoutParams) targetSlot2.getLayoutParams();
+        targetTwoLayoutParams.height = maxDiscHeightInPx;
+        targetSlot2.setLayoutParams(targetTwoLayoutParams);
+        targetSlot2.setImageDrawable(getResources().getDrawable(ga.targetImgResourceList[targetTwoIndex]));
     }
 
     private void createTower() {
@@ -76,6 +123,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         //fill starting pole with corresponding amount of disks
         for (int i = appState.getNumberOfDisks()-1; i >= 0; i--) {
             //create an text view of a disk, starting with the biggest
+
+            //todo set target_1_imageview size as a disk height
 
             final ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
@@ -86,8 +135,9 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                     + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
 
 
-
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
+            if(i == appState.getNumberOfDisks()-1) { diskParams.setMargins(0,-5,0,0); }
+            else {diskParams.setMargins(0,-10,0,0);}
             imageDisk.setLayoutParams(diskParams);
 
             imageDisk.setTag(""+i);
@@ -96,6 +146,17 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
             //add view to the pole
             startPole.addView(imageDisk,0);
+
+//            targetSlot1 = findViewById(R.id.target_1_imageview);
+//            targetSlot2 = findViewById(R.id.target_2_imageview);
+//
+/////////////////
+//            ConstraintLayout layout = (ConstraintLayout) targetSlot1.getParent(); //??
+//            ConstraintLayout.LayoutParams targetParams =
+//                    (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
+//            //targetParams.leftToLeft(guidelineVerticalRight);
+//            targetParams = new ConstraintLayout.LayoutParams(3*maxDiscHeightInPx/2, 3*maxDiscHeightInPx/2);
+//            targetSlot1.setLayoutParams(targetParams);
 
 
             //"measure" the pyramid and adjust target fruit height
@@ -123,9 +184,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             params.guidePercent = newTopGuidlineHeight; // 45% // range: 0 <-> 1
             guidelineHorizontalTop.setLayoutParams(params);
 
-
             appState.resetSteps();
-            //todo updateStepCount
         }
     }
 
@@ -169,19 +228,22 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     }
 
     private void wrongMoveAction() {
-        //Toast.makeText(context, R.string.cant_move_item, Toast.LENGTH_SHORT).show();
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        if(appState.isSoundOn())
+        {
+            uhahSoundMediaPlayer.start();
+        }
 
-// Vibrate for 400 milliseconds
+        //Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 400 milliseconds
         //v.vibrate(100);
         //todo ability to turn off vibration or turn it off with sound
     }
 
-    private void clickSound() {
+    private void discDroppedSound() {
         if(appState.isSoundOn())
         {
             //soundButton.refreshDrawableState();
-            mp.start();
+            woohooSoundMediaPlayer.start();
         }
     }
 
@@ -286,6 +348,9 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         startPole.setTag("start");
         helpPole.setTag("help");
         targetPole.setTag("target");
+
+        guidelineVerticalRight = findViewById(R.id.guideline_vertical_right);
+        guidelineVerticalLeft = findViewById(R.id.guideline_vertical_left);
     }
 
     @Override
@@ -314,6 +379,11 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         // Defines a variable to store the action type for the incoming event
         int action = event.getAction();
         // Handles each of the expected events
+
+        View draggedView = (View) event.getLocalState();
+        ViewGroup owner = (ViewGroup) draggedView.getParent();
+        LinearLayout acceptor = (LinearLayout) view;
+
         switch (action) {
             case DragEvent.ACTION_DRAG_STARTED:
             {
@@ -341,10 +411,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
                 // Gets the text data from the item.
                 String dragData = item.getText().toString();
-
-                View draggedView = (View) event.getLocalState();
-                ViewGroup owner = (ViewGroup) draggedView.getParent();
-                LinearLayout acceptor = (LinearLayout) view;
 
                 //remove the dragged view
                 owner.removeView(draggedView);
@@ -388,14 +454,17 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
             case DragEvent.ACTION_DRAG_ENDED:
             {
-                view.invalidate();
-                clickSound();
 
                 if (dropEventNotHandled(event))
                 {
                     View vi = (View) event.getLocalState();
                     vi.setVisibility(View.VISIBLE);
                 }
+
+                view.invalidate();
+                if(owner == acceptor) {  }
+                else {discDroppedSound();}
+
                 // returns true; the value is ignored.
                 return true;
             }

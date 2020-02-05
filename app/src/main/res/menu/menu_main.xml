@@ -12,6 +12,6 @@
         android:id="@+id/sound_menu_item"
         android:icon="@drawable/ico_music_90x90"
         app:showAsAction="always"
-        android:title="help"/>
+        android:title="Sound"/>
 
 </menu>

@@ -6,6 +6,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -13,12 +14,10 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends ToolbarActivity {
 
-    Button gameButton;
+    ImageButton playButton;
     Toolbar toolbarMain;
     AppState appState;
 
-
-    //building pyramid
     Button addDiskButton;
     Button subtractDiskButton;
     int currentNumberOfDisks = 3; //from 3 to 7
@@ -43,6 +42,9 @@ public class MainActivity extends ToolbarActivity {
         //toolbar
         toolbarMain = findViewById(R.id.toolbar_widget).findViewById(R.id.toolbar_widget);
         setSupportActionBar(toolbarMain);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         //building pyramid
         findViews();
@@ -50,8 +52,8 @@ public class MainActivity extends ToolbarActivity {
         handleClicks();
 
         //"play" button
-        gameButton = findViewById(R.id.game_button);
-        gameButton.setOnClickListener(new View.OnClickListener() {
+        playButton = findViewById(R.id.play_button);
+        playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AppState appState = AppState.getInstance();
@@ -122,17 +124,15 @@ public class MainActivity extends ToolbarActivity {
         {
             //create an text view of a disk, starting with the biggest
 
-
             //todo calculate max W (% of screen W) and max H (% of screen H - toolbarH)/7
             //todo set Layout Params for every disc to restrict sizes, and save aspect ratio
-
 
             ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
             imageDisk.setTag(""+i);
 
-
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
+            diskParams.setMargins(0,-4,0,0);
             imageDisk.setLayoutParams(diskParams);
 
             //add view to the pole
@@ -141,7 +141,7 @@ public class MainActivity extends ToolbarActivity {
     }
 
     private void findViews() {
-        addDiskButton = findViewById(R.id.add_disk_button);
+        addDiskButton = findViewById(R.id.plus_disk_button);
         subtractDiskButton = findViewById(R.id.subtruct_disk_button);
         poleLinearLayout = findViewById(R.id.pole_linear_layout);
     }

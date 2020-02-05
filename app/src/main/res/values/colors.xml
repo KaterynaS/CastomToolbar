@@ -18,8 +18,10 @@
 
 
     <color name="toolbar_background_color">#f5e7b1</color>
-    <color name="toolbar_text_color">#814517</color>
+    <color name="toolbar_text_color">#007fd4</color>
     <color name="toolbar_icon_color">#D0EFDD</color>
+    <color name="string_color">#ffffff</color>
+    <color name="text_on_main_color">#007fd4</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>
@@ -33,5 +35,6 @@
 
 
     <color name="background_blue">#99e3ff</color>
+    <color name="colorPrimaryLight">#ffffff</color>
 
 </resources>

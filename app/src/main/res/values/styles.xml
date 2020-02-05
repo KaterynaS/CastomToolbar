@@ -6,7 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorControlNormal">@color/toolbar_text_color</item>
+        <item name="android:homeAsUpIndicator">@drawable/btn_back</item>
+        <item name="actionMenuTextColor">@color/toolbar_text_color</item>
+
     </style>
 
 
@@ -14,7 +16,7 @@
     <style name="ToolbarTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:textColor">@color/toolbar_text_color</item>
-        <item name="colorControlNormal">@color/toolbar_text_color</item>
+        <item name="actionMenuTextColor">@color/toolbar_text_color</item>
     </style>
 
 
