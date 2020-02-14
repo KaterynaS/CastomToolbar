@@ -24,10 +24,13 @@ public class MainActivity extends ToolbarActivity {
     LinearLayout poleLinearLayout;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         appState = AppState.getInstance();
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -141,8 +144,8 @@ public class MainActivity extends ToolbarActivity {
     }
 
     private void findViews() {
-        addDiskButton = findViewById(R.id.plus_disk_button);
-        subtractDiskButton = findViewById(R.id.subtruct_disk_button);
+        addDiskButton = findViewById(R.id.plus_button);
+        subtractDiskButton = findViewById(R.id.minus_button);
         poleLinearLayout = findViewById(R.id.pole_linear_layout);
     }
 

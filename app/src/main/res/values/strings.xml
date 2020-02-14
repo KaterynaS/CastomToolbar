@@ -10,12 +10,10 @@
 
     <string name="slide_2_title">Android</string>
     <string name="slide_2_desc">Android is a mobile operating system developed by Google.</string>
-    <string name="cant_move_item">can\'t move item</string>
     <string name="congrat_message">Congratulations!</string>
     <string name="hard">hard</string>
     <string name="stage">stage</string>
     <string name="easy">easy</string>
-    <string name="target_on_main_page">target on main page</string>
     <string name="logo_on_main">logo on main</string>
     <string name="cloud_with_sign">cloud with sign</string>
     <string name="choose_level">Choose level</string>

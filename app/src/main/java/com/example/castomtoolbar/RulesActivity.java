@@ -9,12 +9,15 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ public class RulesActivity extends AppCompatActivity {
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
     private TextView[] dots;
+    private ImageView[] dotsImg;
     private int[] layouts;
     private Button btnSkip, btnNext;
     //private PrefManager prefManager;
@@ -54,8 +58,9 @@ public class RulesActivity extends AppCompatActivity {
 
         // layouts of welcome sliders
         layouts = new int[]{
-                R.layout.rules_slide1,
-                R.layout.rules_slide2
+                R.layout.tutorial_slide1,
+                R.layout.tutorial_slide2,
+                R.layout.tutorial_slide3
         };
 
         // adding bottom dots
@@ -91,22 +96,54 @@ public class RulesActivity extends AppCompatActivity {
     }
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        int numberOfTutorialPages = layouts.length;
+        Log.d("addBottomDots", "numberOfTutorialPages = " + numberOfTutorialPages);
+
+        dots = new TextView[numberOfTutorialPages];
+        dotsImg = new ImageView[numberOfTutorialPages];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
 
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml(" :"));
-            dots[i].setTextSize(45);
-            dots[i].setTextColor(colorsInactive[currentPage]);
-            dotsLayout.addView(dots[i]);
+
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                dotsImg[i] = new ImageView(this);
+                dotsImg[i].setImageDrawable(getDrawable(R.drawable.tutorial_btn_nav_inactive));
+
+                LinearLayout.LayoutParams dotParams
+                        = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                dotParams.setMargins(12, 12, 12, 0);
+                dotsImg[i].setLayoutParams(dotParams);
+
+
+                dotsLayout.addView(dotsImg[i]);
+            }
+            else
+            {
+                dots[i] = new TextView(this);
+                dots[i].setText(Html.fromHtml(" :"));
+                dots[i].setTextSize(45);
+                dots[i].setTextColor(colorsInactive[currentPage]);
+                dotsLayout.addView(dots[i]);
+            }
         }
 
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
+//        if (dots.length > 0)
+//            dots[currentPage].setTextColor(colorsActive[currentPage]);
+
+        if (dotsImg.length > 0)
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                dotsImg[currentPage].setImageDrawable(getDrawable(R.drawable.tutorial_btn_nav_active));
+            }
+            else
+            {
+                dots[currentPage].setTextColor(colorsActive[currentPage]);
+            }
+        }
     }
 
     private int getItem(int i) {

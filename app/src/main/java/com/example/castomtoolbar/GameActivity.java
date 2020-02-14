@@ -3,18 +3,26 @@ package com.example.castomtoolbar;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -188,6 +196,239 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
     }
 
+    private void victoryAction()
+    {
+
+        saveResult();
+
+        AlertDialog.Builder builder
+                = new AlertDialog.Builder(GameActivity.this);
+        View view = getLayoutInflater().inflate(R.layout.dialog, null);
+
+        final AlertDialog dialog = builder.create();
+        dialog.setView(view, 0, 0, 0, 0);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenHeightPixels = displayMetrics.heightPixels;
+        int screenWidthPixels = displayMetrics.widthPixels;
+
+        int dialogWidth;
+        int dialogHeight;
+
+
+        if(screenHeightPixels > 1500)
+        {
+             dialogWidth = screenWidthPixels*5/10;
+             dialogHeight = screenHeightPixels*3/10;
+        }
+        else
+        {
+             dialogWidth = screenWidthPixels*7/10;
+             dialogHeight = screenHeightPixels*5/10;
+        }
+
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = dialogWidth;
+        lp.height = dialogHeight;
+
+        TextView movesTextview = view.findViewById(R.id.number_of_moves_textview);
+        TextView bestMovesTextview = view.findViewById(R.id.best_result_textview);
+
+
+        TextView homeButton = view.findViewById(R.id.home_button_textview);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        LinearLayout playAgainButton = view.findViewById(R.id.play_again_button_linearlayout);
+        playAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restartGame();
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
+        int a = appState.stepsTaken;
+        int b = getBestResult();
+
+        Log.d("buttonDialog", "steps taken = " + a + "; best = " + b);
+
+        movesTextview.setText(appState.stepsTaken + "");
+        bestMovesTextview.setText("Best result " + b + " moves");
+
+    }
+
+    private void createTower2() {
+        GameAttributes ga = new GameAttributes();
+        //fill starting pole with corresponding amount of disks
+        for (int i = appState.getNumberOfDisks()-1; i >= 0; i--)
+        {
+            final ImageView imageDisk = new ImageView(getApplicationContext());
+            imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
+
+            int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.31 - 16); //16 is a left margin
+            Log.d("createTower2", "maxDiscWidthInPx = " + maxDiscWidthInPx);
+
+            int maxDiskHPx;
+            double biggestDiskInGameWtoH;
+
+            BitmapFactory.Options dimensions = new BitmapFactory.Options();
+            dimensions.inJustDecodeBounds = true;
+
+            switch (appState.getNumberOfDisks())
+            {
+                case 3: {
+                    Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kawai_3, dimensions);
+                    double resourceH = dimensions.outHeight;
+                    double resourceW = dimensions.outWidth;
+                    biggestDiskInGameWtoH = resourceH / resourceW;
+                    break;
+                }
+                case  4:{
+                    Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kawai_4, dimensions);
+                    double resourceH = dimensions.outHeight;
+                    double resourceW = dimensions.outWidth;
+                    biggestDiskInGameWtoH = resourceH / resourceW;
+                    break;
+                }
+                case  5:{
+                    Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kawai_5, dimensions);
+                    double resourceH = dimensions.outHeight;
+                    double resourceW = dimensions.outWidth;
+                    biggestDiskInGameWtoH = resourceH / resourceW;
+                    break;
+                }
+                case  6:
+                {
+                    Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kawai_6, dimensions);
+                    double resourceH = dimensions.outHeight;
+                    double resourceW = dimensions.outWidth;
+                    biggestDiskInGameWtoH = resourceH / resourceW;
+                    break;
+                }
+                default:
+                    {
+                    Bitmap mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.kawai_7, dimensions);
+                    double resourceH = dimensions.outHeight;
+                    double resourceW = dimensions.outWidth;
+                    biggestDiskInGameWtoH = resourceH / resourceW;
+                    break;
+                }
+            }
+
+            Log.d("createTower2", "biggestDiskInGameWtoH = " + biggestDiskInGameWtoH);
+
+
+            maxDiskHPx = (int) (maxDiscWidthInPx * biggestDiskInGameWtoH);
+            Log.d("createTower2", "maxDiskHPx = " + maxDiskHPx);
+
+
+            //set disk height
+            LinearLayout.LayoutParams diskParams
+                    = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, maxDiskHPx);
+            if(i == appState.getNumberOfDisks()-1) { diskParams.setMargins(0,-5,0,0); }
+            else {diskParams.setMargins(0,-10,0,0);}
+            imageDisk.setLayoutParams(diskParams);
+
+
+            //translate px to dp
+            int diskHinDp = pxToDp(maxDiskHPx);
+            int poleHinPx = appState.getNumberOfDisks() * diskHinDp;
+            Log.d("createTower2", "poleHinPx = " + poleHinPx);
+
+
+            guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
+            ConstraintLayout.LayoutParams guidelineHorizontalBottomParams =
+                    (ConstraintLayout.LayoutParams) guidelineHorizontalBottom.getLayoutParams();
+
+
+            float guidelineHorizontalBottomHeightInPercents = guidelineHorizontalBottomParams.guidePercent;
+            Log.d("createTower2", "\nguidelineHorizontalBottomHeightInPercents = " + guidelineHorizontalBottomHeightInPercents);
+
+            float poleHinPersents = poleHinPx/(float)appState.getScreenHeight();
+            Log.d("createTower2", "\npoleHinPersents = " + poleHinPersents);
+
+            float newTopGuidlineHeight = guidelineHorizontalBottomHeightInPercents - poleHinPersents;
+            Log.d("createTower2", "\nnewTopGuidlineHeight = " + newTopGuidlineHeight);
+
+            //move upper guidline
+            guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guidelineHorizontalTop.getLayoutParams();
+            params.guidePercent = newTopGuidlineHeight; // 45% // range: 0 <-> 1
+            guidelineHorizontalTop.setLayoutParams(params);
+
+
+
+//
+
+            imageDisk.setTag(""+i);
+
+            imageDisk.setOnTouchListener(new MyTouchListener());
+
+            //add view to the pole
+            startPole.addView(imageDisk,0);
+
+            appState.resetSteps();
+//
+////            targetSlot1 = findViewById(R.id.target_1_imageview);
+////            targetSlot2 = findViewById(R.id.target_2_imageview);
+////
+///////////////////
+////            ConstraintLayout layout = (ConstraintLayout) targetSlot1.getParent(); //??
+////            ConstraintLayout.LayoutParams targetParams =
+////                    (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
+////            //targetParams.leftToLeft(guidelineVerticalRight);
+////            targetParams = new ConstraintLayout.LayoutParams(3*maxDiscHeightInPx/2, 3*maxDiscHeightInPx/2);
+////            targetSlot1.setLayoutParams(targetParams);
+//
+//
+//            //"measure" the pyramid and adjust target fruit height
+//            int pyramidHeight = maxDiscHeightInPx * appState.getNumberOfDisks();
+//            int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
+//
+//            Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
+//            Log.d("measurements", "\npyramidHeight in px = " + pyramidHeight
+//                    + "\npyramidHeightInPercentsOfScreenHeight = " + pyramidHeightInPercentsOfScreenHeight);
+//
+//            guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
+//            ConstraintLayout.LayoutParams guidelineHorizontalBottomParams =
+//                    (ConstraintLayout.LayoutParams) guidelineHorizontalBottom.getLayoutParams();
+//
+//
+//            float guidelineHorizontalBottomHeightInPercents = guidelineHorizontalBottomParams.guidePercent;
+//            Log.d("measurements", "\nguidelineHorizontalBottomHeightInPercents = " + guidelineHorizontalBottomHeightInPercents);
+//
+//            float newTopGuidlineHeight = (guidelineHorizontalBottomHeightInPercents*100 - pyramidHeightInPercentsOfScreenHeight)/100;
+//
+//            Log.d("measurements", "\nnewTopGuidlineHeight % = " + newTopGuidlineHeight);
+//
+//            guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
+//            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guidelineHorizontalTop.getLayoutParams();
+//            params.guidePercent = newTopGuidlineHeight; // 45% // range: 0 <-> 1
+//            guidelineHorizontalTop.setLayoutParams(params);
+//
+        }
+    }
+
+    public int pxToDp(int px) {
+        DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
+        return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
     private void setOnListeners() {
         startPole.setOnDragListener(this);
         helpPole.setOnDragListener(this);
@@ -247,7 +488,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
     }
 
-    private void victoryAction() {
+    private void victoryActionA() {
 
         saveResult();
 
@@ -422,6 +663,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                     if(!acceptor.getTag().equals(owner.getTag()))
                     {
                         appState.addOneStep();
+                        discDroppedSound();
                         updateStepsCounterTextview();
                     }
 
@@ -432,6 +674,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                     if(!acceptor.getTag().equals(owner.getTag()))
                     {
                         appState.addOneStep();
+                        discDroppedSound();
                         updateStepsCounterTextview();
                     }
                 }
@@ -462,8 +705,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                 }
 
                 view.invalidate();
-                if(owner == acceptor) {  }
-                else {discDroppedSound();}
 
                 // returns true; the value is ignored.
                 return true;

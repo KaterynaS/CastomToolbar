@@ -51,7 +51,6 @@ public class AppState {
         return soundOn;
     }
 
-
     public int getScreenWidth() {
         return screenWidth;
     }
