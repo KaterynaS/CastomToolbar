@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kawai Towers</string>
+    <string name="best_result_in_victory_dialog">Лучший результат:</string>
+    <string name="choose_level">Выберите уровень</string>
+    <string name="easy">легко</string>
+    <string name="hard">сложно</string>
+    <string name="moves_in_victory_dialog">шагов</string>
+    <string name="moves_toolbar">Шаги:</string>
+    <string name="skip">ПРОПУСТИТЬ</string>
+    <string name="next">СЛЕДУЮЩАЯ</string>
+    <string name="start">ВСЁ ЯСНО</string>
+    <string name="your_result_in_victory_dialog">Ваш результат:</string>
+    <string name="home_in_victory_dialog">На главную</string>
+    <string name="play_again_in_victory_dialog">Играть ещё</string>
+    <string name="you_did_it_in_victory_dialog">"Вы сделали это за "</string>
+    <string name="you_won_victory_dialog">ПОБЕДА!</string>
+    <string name="tutorial_text_1">Чтобы достать угощение перемещайте по одному ряду</string>
+    <string name="tutorial_text_2">Можно ставить только меньший ряд на больший</string>
+    <string name="tutorial_text_3">Постарайтесь достать угощение за минимум шагов</string>
+    <string name="stage">подставка</string>
+    <string name="logo_on_main">логотип</string>
+    <string name="congrat_message">Поздравляем!</string>
+    <string name="cloud_with_sign">тучка со знаком</string>
+    <string name="best_result_15_steps_in_victory_dialog">лучший результат 15 шагов</string>
+</resources>

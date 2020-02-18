@@ -126,7 +126,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline8"></Button>
 
     <!--
-        android:background="@drawable/btn_plus"
+        android:background="@drawable/btn_plus_idle"
         android:foreground="?attr/selectableItemBackgroundBorderless"
     -->
 
@@ -148,7 +148,7 @@
 
     <!--
 
-        android:background="@drawable/btn_minus"
+        android:background="@drawable/btn_minus_idle"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"
     -->
 

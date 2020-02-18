@@ -36,21 +36,22 @@
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="8dp"
         android:background="@null"
         android:text="@string/next"
-        android:textColor="#039BE5"/>
+        android:textColor="#039BE5" />
 
     <Button
         android:id="@+id/btn_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
         android:background="@null"
         android:text="@string/skip"
-        android:textColor="#039BE5"
-        />
+        android:textColor="#039BE5" />
 
 </RelativeLayout>

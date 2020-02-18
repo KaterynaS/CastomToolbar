@@ -20,4 +20,20 @@
     </style>
 
 
+    <!-- Dialog style -->
+    <style name="CustomAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">#80000000</item>
+
+        <item name="android:layout_gravity">center_vertical</item>
+
+        <item name="windowFixedWidthMajor">60%</item>
+        <item name="windowFixedHeightMajor">60%</item>
+        <item name="windowFixedWidthMinor">60%</item>
+        <item name="windowFixedHeightMinor">60%</item>
+
+    </style>
+
+
 </resources>

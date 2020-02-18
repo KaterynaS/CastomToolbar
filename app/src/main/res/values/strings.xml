@@ -1,21 +1,36 @@
 <resources>
     <string name="app_name">Kawai Towers</string>
 
+    <!-- tutorial -->
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
     <string name="start">GOT IT</string>
 
-    <string name="slide_1_title">Welcome to Javatpoint!</string>
-    <string name="slide_1_desc">Javatpoint is passionate to offer better technical content to the world.</string>
-
-    <string name="slide_2_title">Android</string>
-    <string name="slide_2_desc">Android is a mobile operating system developed by Google.</string>
-    <string name="congrat_message">Congratulations!</string>
+    <!-- main -->
+    <string name="choose_level">Choose level</string>
     <string name="hard">hard</string>
-    <string name="stage">stage</string>
     <string name="easy">easy</string>
+
+    <!-- toolbar -->
+    <string name="moves_toolbar">Moves:</string>
+
+
+    <!-- victory dialog -->
+    <string name="congrat_message">Congratulations!</string>
+    <string name="best_result_in_victory_dialog">Best result:</string>
+    <string name="your_result_in_victory_dialog">Your result:</string>
+    <string name="moves_in_victory_dialog">moves</string>
+    <string name="home_in_victory_dialog">Home</string>
+    <string name="play_again_in_victory_dialog">Play again</string>
+    <string name="best_result_15_steps_in_victory_dialog">best result 15 steps</string>
+    <string name="you_did_it_in_victory_dialog">You did it in</string>
+    <string name="you_won_victory_dialog">YOU WON!</string>
+
+
     <string name="logo_on_main">logo on main</string>
     <string name="cloud_with_sign">cloud with sign</string>
-    <string name="choose_level">Choose level</string>
-
+    <string name="stage">stage</string>
+    <string name="tutorial_text_2">No larger row may be placed on a smaller row</string>
+    <string name="tutorial_text_3">Try to do it in minimum moves</string>
+    <string name="tutorial_text_1">To get the treat move one row at a time</string>
 </resources>

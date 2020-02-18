@@ -113,11 +113,9 @@
         android:id="@+id/plus_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@android:color/transparent"
         android:layout_gravity="center_horizontal|center_vertical"
-
-
         android:foreground="@drawable/plus_button_selectable_background"
-        app:elevation="8dp"
 
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintDimensionRatio="1:1"
@@ -125,21 +123,15 @@
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline8"></Button>
 
-    <!--
-        android:background="@drawable/btn_plus"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-    -->
-
-
     <Button
         android:id="@+id/minus_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-
-
         android:background="@android:color/transparent"
+        android:layout_gravity="center_horizontal|center_vertical"
         android:foreground="@drawable/minus_button_selectable_background"
+
+
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
@@ -148,7 +140,7 @@
 
     <!--
 
-        android:background="@drawable/btn_minus"
+        android:background="@drawable/btn_minus_idle"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"
     -->
 

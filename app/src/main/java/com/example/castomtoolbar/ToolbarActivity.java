@@ -3,11 +3,8 @@ package com.example.castomtoolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -64,19 +61,16 @@ public abstract class ToolbarActivity extends AppCompatActivity {
     }
 
     public void updateStepsCounterTextview() {
-        //todo move it to toolbar class
         MenuItem counterMenuItem = mainMenu.findItem(R.id.counter_menu_item);
 
         AppState appState = AppState.getInstance();
 
-        String steps = "Steps: " + appState.getStepsTaken();
+        String steps = getString(R.string.moves_toolbar) + " " + appState.getStepsTaken();
         counterMenuItem.setTitle(steps);
     }
 
     public abstract void restartGame();
 
-
-    //todo the only place in code where sound images are taken from
     private void turnSound() {
         AppState appState = AppState.getInstance();
         appState.turnSound();
@@ -90,6 +84,5 @@ public abstract class ToolbarActivity extends AppCompatActivity {
         {
             soundMenuItem.setIcon(R.drawable.ico_music_mute_90x90);
         }
-
     }
 }
