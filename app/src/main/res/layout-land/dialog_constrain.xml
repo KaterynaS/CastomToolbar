@@ -15,6 +15,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginLeft="-1dp"
         android:paddingStart="-1dp"
         android:paddingLeft="-1dp"
         android:paddingBottom="-1dp"
@@ -31,7 +33,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="-1dp"
-        android:layout_marginRight="-2dp"
+        android:layout_marginRight="-1dp"
         android:foregroundGravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -119,7 +121,7 @@
 
     </LinearLayout>
 
-
+    <!--best result text -->
     <TextView
         android:id="@+id/best_result_textview"
         android:layout_width="0dp"
@@ -139,77 +141,75 @@
         app:layout_constraintTop_toTopOf="@+id/you_did_it_bottom_guideline" />
 
 
-    <LinearLayout
-        android:id="@+id/buttons_linearlayout"
+    <!-- home button -->
+    <TextView
+        android:id="@+id/home_button_textview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_gravity="bottom|end"
-        android:layout_weight="7"
-        android:clipToPadding="false"
-        android:gravity="bottom|right|end"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/victory_home_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="center_horizontal|center_vertical"
+        android:paddingHorizontal="5dp"
+        android:text="@string/home_in_victory_dialog"
+        android:textColor="#393939"
+        app:autoSizeMaxTextSize="18sp"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline27"
+        app:layout_constraintStart_toStartOf="@+id/guideline28"
+        app:layout_constraintTop_toTopOf="@+id/buttons_top_guideline" />
+
+    <!-- play again button -->
+    <LinearLayout
+        android:id="@+id/play_again_button_linearlayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/victory_play_again_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal"
-        android:padding="4dp"
-        android:paddingEnd="8dp"
+        android:paddingHorizontal="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/left_cat_imageView"
+        app:layout_constraintStart_toStartOf="@+id/guideline27"
         app:layout_constraintTop_toTopOf="@+id/buttons_top_guideline">
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:src="@drawable/ic_replay_white_24dp" />
 
         <TextView
-            android:id="@+id/home_button_textview"
-            android:layout_width="wrap_content"
+            android:id="@+id/play_agian_button_textview"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/victory_home_button"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:gravity="center_vertical|end|right"
-            android:paddingHorizontal="5dp"
-            android:text="@string/home_in_victory_dialog"
-            android:textColor="#393939"
+            android:layout_weight="6"
+            android:fontFamily="@font/arial"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:text="@string/play_again_in_victory_dialog"
+            android:textColor="#ffffff"
             app:autoSizeMaxTextSize="18sp"
             app:autoSizeMinTextSize="10sp"
             app:autoSizeTextType="uniform" />
-
-
-        <LinearLayout
-            android:id="@+id/play_again_button_linearlayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:background="@drawable/victory_play_again_button"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackgroundBorderless"
-            android:gravity="center_vertical|right|end"
-            android:orientation="horizontal"
-            android:paddingHorizontal="5dp">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_replay_white_24dp" />
-
-            <TextView
-                android:id="@+id/play_agian_button_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/arial"
-                android:maxLines="1"
-                android:text="@string/play_again_in_victory_dialog"
-                android:textColor="#ffffff"
-                app:autoSizeMaxTextSize="18sp"
-                app:autoSizeMinTextSize="10sp"
-                app:autoSizeTextType="uniform" />
-
-        </LinearLayout>
-
 
     </LinearLayout>
 
@@ -229,13 +229,6 @@
         app:layout_constraintGuide_percent="0.53" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/buttons_top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7989822" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/best_result_bottom_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -243,11 +236,33 @@
         app:layout_constraintGuide_percent="0.69" />
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/buttons_top_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.77" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.54" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

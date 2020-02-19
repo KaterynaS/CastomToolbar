@@ -219,20 +219,21 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         double dialogHeight;
 
 
-        if(screenHeightPixels > 1500)
+        if(screenHeightPixels < 1500)
         {
              dialogWidth = screenWidthPixels*7/10;
              dialogHeight = screenHeightPixels*5/10;
         }
         else
         {
-             dialogWidth = screenWidthPixels*7/10;
-             dialogHeight = screenHeightPixels*5/10;
+             dialogWidth = screenWidthPixels*6/10;
+             dialogHeight = screenHeightPixels*4/10;
         }
 
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
+//        lp.dimAmount=0.5f;
         lp.width = (int) dialogWidth;
         lp.height = (int) dialogHeight;
 
@@ -261,7 +262,9 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setBackgroundDrawableResource(R.color.dim_background);
+
 
 
         int a = appState.stepsTaken;
@@ -528,12 +531,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     public void saveResult() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        //todo save steps depending on discs number
-//
-//        editor.putInt()
-//        editor.putString(TEXT, textView.getText().toString());
-//        editor.putBoolean(SWITCH1, switch1.isChecked());
 
 
         switch (appState.getNumberOfDisks()) {
