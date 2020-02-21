@@ -5,10 +5,9 @@ import android.content.ClipDescription;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,12 +28,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends ToolbarActivity implements View.OnDragListener {
 
     AppState appState;
+
+    ConstraintLayout mainParentLayout;
 
     Context context;
     MediaPlayer woohooSoundMediaPlayer;
@@ -71,6 +70,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         appState = AppState.getInstance();
 
+        mainParentLayout = findViewById(R.id.game_activity_layout);
+
         toolbarGame = findViewById(R.id.toolbar_widget);
         setSupportActionBar(toolbarGame);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -82,11 +83,14 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         uhahSoundMediaPlayer = MediaPlayer.create(this, R.raw.uh_oh);
         context = GameActivity.this;
 
+
         findViews();
 
         placeTargets();
 
         setOnListeners();
+
+        //measureDisksContainer();
         createTower();
     }
 
@@ -155,8 +159,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             //add view to the pole
             startPole.addView(imageDisk,0);
 
-//            targetSlot1 = findViewById(R.id.target_1_imageview);
-//            targetSlot2 = findViewById(R.id.target_2_imageview);
+            targetSlot1 = findViewById(R.id.target_1_imageview);
+            targetSlot2 = findViewById(R.id.target_2_imageview);
 //
 /////////////////
 //            ConstraintLayout layout = (ConstraintLayout) targetSlot1.getParent(); //??
@@ -196,13 +200,166 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
     }
 
+    private void measureDisksContainer() {
+
+
+        appState = AppState.getInstance();
+        //calculate disks max sizes depending on screen size
+        //container_max_w and container_max_h in px
+
+        //int disksHeight;
+
+        ConstraintLayout parent = findViewById(R.id.game_activity_layout);
+        parent.post(new Runnable()
+        {
+            @Override
+            public void run() {
+                Guideline guidelineVerticalLeft = findViewById(R.id.guideline_vertical_left);
+
+                int container_max_w = guidelineVerticalLeft.getLeft(); //left screen edge to guideline_vertical_left
+                Log.i("measureDisksContainer",  "width: " + container_max_w+ "");
+                //appState.setContainer_max_w(container_max_w);
+
+                Guideline guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
+                Guideline guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
+
+                int container_max_h; //guideline_horizontal_bottom to guideline_horizontal_top
+                container_max_h = Math.abs(guidelineHorizontalBottom.getTop() - guidelineHorizontalTop.getTop());
+                //appState.setContainer_max_h(container_max_h);
+                Log.i("measureDisksContainer",  "height: " + container_max_h);
+
+
+
+                GameAttributes ga = new GameAttributes();
+
+                //biggest disk of the level w and h in px
+                int level = appState.numberOfDisks;
+
+                Drawable biggestDiskOnLevel = getResources().getDrawable(ga.disksImgResourcesList[level-1]);
+                int biggestDiskOnLevelH = biggestDiskOnLevel.getIntrinsicHeight();
+                int biggestDiskOnLevelW = biggestDiskOnLevel.getIntrinsicWidth();
+                Log.d("measureDisksContainer", "biggestDiskOnLevel w and h: " + biggestDiskOnLevelW + ", " + biggestDiskOnLevelH);
+
+                Log.d("measureDisksContainer", "Container_max_w = " + container_max_w +
+                        "\nContainer_max_h = " + container_max_h +
+                        "\nlevel "+ level);
+
+                int disksHeight;
+
+                if(container_max_w/(container_max_h/level) >=
+                        biggestDiskOnLevelW/biggestDiskOnLevelH)
+                {
+                    disksHeight = biggestDiskOnLevelW * biggestDiskOnLevelH / biggestDiskOnLevelW;
+                    biggestDiskOnLevelW = container_max_w;
+
+                    Log.d("measureDisksContainer", "\ndisksHeight: " + disksHeight
+                            + "\nbiggestW: " + biggestDiskOnLevelW);
+                }
+
+                else
+                {
+                    disksHeight = container_max_h/level;
+                    biggestDiskOnLevelW = disksHeight * biggestDiskOnLevelW / biggestDiskOnLevelH;
+
+
+                    Log.d("measureDisksContainer", "\ndisksHeight: " + disksHeight
+                            + "\nbiggestW: " + biggestDiskOnLevelW);
+                }
+
+
+
+
+
+
+                for (int i = appState.getNumberOfDisks()-1; i >= 0; i--) {
+                    //create an text view of a disk, starting with the biggest
+
+                    final ImageView imageDisk = new ImageView(getApplicationContext());
+                    imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
+
+                    int maxDiscHeightInPx = disksHeight; //48 is a toolbar height
+
+                    Drawable currentDisk = getResources().getDrawable(ga.disksImgResourcesList[i]);
+                    int currentDiskIntrH = currentDisk.getIntrinsicHeight();
+                    int currentDiskIntrW = currentDisk.getIntrinsicWidth();
+
+
+                    int maxDiscWidthInPx = disksHeight * currentDiskIntrW / currentDiskIntrH; //16 is a left margin
+                    Log.d("updateDiskPyramid", "\nmaxDiscWidthInPx = " + maxDiscWidthInPx
+                            + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
+
+
+                    LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
+                    if(i == appState.getNumberOfDisks()-1) { diskParams.setMargins(0,-5,0,0); }
+                    else {diskParams.setMargins(0,-10,0,0);}
+                    imageDisk.setLayoutParams(diskParams);
+
+                    imageDisk.setTag(""+i);
+
+                    imageDisk.setOnTouchListener(new MyTouchListener());
+
+                    //add view to the pole
+                    startPole.addView(imageDisk,0);
+
+//            targetSlot1 = findViewById(R.id.target_1_imageview);
+//            targetSlot2 = findViewById(R.id.target_2_imageview);
+//
+/////////////////
+//            ConstraintLayout layout = (ConstraintLayout) targetSlot1.getParent(); //??
+//            ConstraintLayout.LayoutParams targetParams =
+//                    (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
+//            //targetParams.leftToLeft(guidelineVerticalRight);
+//            targetParams = new ConstraintLayout.LayoutParams(3*maxDiscHeightInPx/2, 3*maxDiscHeightInPx/2);
+//            targetSlot1.setLayoutParams(targetParams);
+
+
+                    //"measure" the pyramid and adjust target fruit height
+                    int pyramidHeight = maxDiscHeightInPx * appState.getNumberOfDisks();
+                    int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
+
+                    Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
+                    Log.d("measurements", "\npyramidHeight in px = " + pyramidHeight
+                            + "\npyramidHeightInPercentsOfScreenHeight = " + pyramidHeightInPercentsOfScreenHeight);
+
+                    guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
+                    ConstraintLayout.LayoutParams guidelineHorizontalBottomParams =
+                            (ConstraintLayout.LayoutParams) guidelineHorizontalBottom.getLayoutParams();
+
+
+                    float guidelineHorizontalBottomHeightInPercents = guidelineHorizontalBottomParams.guidePercent;
+                    Log.d("measurements", "\nguidelineHorizontalBottomHeightInPercents = " + guidelineHorizontalBottomHeightInPercents);
+
+                    float newTopGuidlineHeight = (guidelineHorizontalBottomHeightInPercents*100 - pyramidHeightInPercentsOfScreenHeight)/100;
+
+                    Log.d("measurements", "\nnewTopGuidlineHeight % = " + newTopGuidlineHeight);
+
+//            guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
+//            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guidelineHorizontalTop.getLayoutParams();
+//            params.guidePercent = newTopGuidlineHeight; // 45% // range: 0 <-> 1
+//            guidelineHorizontalTop.setLayoutParams(params);
+
+                    appState.resetSteps();
+                }
+
+
+
+
+            }
+        });
+
+
+
+
+    }
+
+
     private void victoryAction()
     {
         saveResult();
 
         AlertDialog.Builder builder
                 = new AlertDialog.Builder(GameActivity.this, R.style.CustomAlertDialogStyle);
-        View view = getLayoutInflater().inflate(R.layout.dialog_constrain, null);
+        View view = getLayoutInflater().inflate(R.layout.dialog_solid_background, null);
 
 
 
@@ -233,7 +390,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
-//        lp.dimAmount=0.5f;
+        // lp.dimAmount=0.5f;
         lp.width = (int) dialogWidth;
         lp.height = (int) dialogHeight;
 
@@ -259,11 +416,24 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             }
         });
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            mainParentLayout.setForeground(new ColorDrawable(getColor(R.color.dim_background)));
+        }
+        mainParentLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                restartGame();
+                dialog.dismiss();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    mainParentLayout.setForeground(new ColorDrawable(Color.TRANSPARENT));
+                }
+
+            }
+        });
 
         dialog.show();
         dialog.getWindow().setAttributes(lp);
-        //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().setBackgroundDrawableResource(R.color.dim_background);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
 

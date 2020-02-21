@@ -1,37 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="400dp"
-    android:layout_height="200dp"
-    android:background="@drawable/dialog_bg"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/victory_dialog_background"
     android:orientation="vertical">
 
-
-    <ImageView
-        android:id="@+id/left_cat_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:paddingLeft="-1dp"
-        android:paddingBottom="-1dp"
-        app:srcCompat="@drawable/victory_cat1" />
-
-    <ImageView
-        android:id="@+id/right_cat_imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginRight="0dp"
-        android:foregroundGravity="center_vertical"
-        android:paddingTop="5dp"
-        android:paddingRight="-1dp"
-        app:srcCompat="@drawable/victory_cat2" />
 
     <LinearLayout
         android:id="@+id/info_text_linearlayout"
@@ -40,12 +14,6 @@
         android:orientation="vertical"
         android:padding="3dp">
 
-
-        <TextView
-            android:id="@+id/margin_top"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
 
         <TextView
             android:id="@+id/you_won_textView"
@@ -57,6 +25,7 @@
             android:elegantTextHeight="true"
             android:fontFamily="@font/ar_carter_font"
             android:gravity="center_horizontal|center_vertical"
+            android:paddingTop="6dp"
             android:text="@string/you_won_victory_dialog"
             android:textColor="#DD1515"
             android:textStyle="bold"
@@ -65,12 +34,6 @@
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform" />
 
-        <TextView
-            android:id="@+id/margin_youwin_steps"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
-
 
         <LinearLayout
             android:id="@+id/you_did_it_steps_linear_layout"
@@ -78,7 +41,8 @@
             android:layout_height="0dp"
             android:layout_weight="8"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="6dp">
 
             <TextView
                 android:id="@+id/you_did_it_textview"
@@ -128,18 +92,13 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/margin_youdidit_best"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
-
-        <TextView
             android:id="@+id/best_result_textview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
             android:fontFamily="@font/ar_carter_font"
             android:gravity="center_horizontal"
+            android:paddingTop="6dp"
             android:text="@string/best_result_15_steps_in_victory_dialog"
             android:textColor="#306D18"
             app:autoSizeMaxTextSize="28sp"
@@ -147,24 +106,21 @@
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform" />
 
-        <TextView
-            android:id="@+id/margin_best_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <!-- buttons linear layout -->
         <LinearLayout
             android:id="@+id/buttons_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="end"
             android:layout_weight="7"
             android:gravity="end|center_vertical"
-            android:layout_gravity="end"
             android:orientation="horizontal"
             android:padding="2dp"
+            android:paddingTop="6dp"
             android:paddingEnd="8dp"
-            android:paddingRight="8dp">
+            android:paddingRight="8dp"
+            android:paddingBottom="6dp">
 
 
             <TextView
@@ -175,15 +131,16 @@
                 android:layout_marginRight="8dp"
                 android:background="@drawable/victory_home_button"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:gravity="center_horizontal|center_vertical"
                 android:paddingHorizontal="5dp"
                 android:text="@string/home_in_victory_dialog"
                 android:textColor="#393939"
-                app:autoSizeMaxTextSize="18sp"
-                app:autoSizeMinTextSize="12sp"
-                app:autoSizeTextType="uniform"
-                android:focusable="true" />
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform" />
 
 
             <LinearLayout
@@ -195,11 +152,11 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/victory_play_again_button"
                 android:clickable="true"
+                android:focusable="true"
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal"
-                android:paddingHorizontal="5dp"
-                android:focusable="true">
+                android:paddingHorizontal="5dp">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -223,12 +180,6 @@
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/margin_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
     </LinearLayout>
 

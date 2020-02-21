@@ -17,7 +17,8 @@ public class GameAttributes {
                 R.drawable.treat_cloud_donat,
                 R.drawable.treat_cloud_icecream,
                 R.drawable.treat_cloud_strawberry,
-                R.drawable.treat_cloud_watermelon
+                R.drawable.treat_cloud_watermelon,
+                R.drawable.treat_cloud_fish
         };
     }
 }

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/game_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -152,27 +153,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <ImageView
         android:id="@+id/target_1_imageview"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="8dp"
-        android:foregroundGravity="bottom|center_horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_top"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_widget"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/treat_cloud_donat" />
 
 
     <ImageView
         android:id="@+id/target_2_imageview"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right"

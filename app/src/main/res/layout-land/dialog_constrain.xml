@@ -52,9 +52,8 @@
         android:text="@string/you_won_victory_dialog"
         android:textColor="#DD1515"
         android:textStyle="bold"
-        app:autoSizeMaxTextSize="80sp"
-        app:autoSizeMinTextSize="18sp"
-        app:autoSizeStepGranularity="2sp"
+        app:autoSizeMaxTextSize="90sp"
+        app:autoSizeMinTextSize="24sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/you_won_bottom_guidline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,9 +82,8 @@
             android:gravity="right|center_vertical"
             android:maxLines="1"
             android:text="@string/you_did_it_in_victory_dialog"
-            app:autoSizeMaxTextSize="48sp"
-            app:autoSizeMinTextSize="14sp"
-            app:autoSizeStepGranularity="2sp"
+            app:autoSizeMaxTextSize="60sp"
+            app:autoSizeMinTextSize="20sp"
             app:autoSizeTextType="uniform" />
 
         <TextView
@@ -99,9 +97,8 @@
             android:maxLines="1"
             android:text="20"
             android:textColor="#29732C"
-            app:autoSizeMaxTextSize="48sp"
-            app:autoSizeMinTextSize="16sp"
-            app:autoSizeStepGranularity="2sp"
+            app:autoSizeMaxTextSize="60sp"
+            app:autoSizeMinTextSize="22sp"
             app:autoSizeTextType="uniform" />
 
 
@@ -114,9 +111,8 @@
             android:gravity="left|center_vertical"
             android:maxLines="1"
             android:text="@string/moves_in_victory_dialog"
-            app:autoSizeMaxTextSize="48sp"
-            app:autoSizeMinTextSize="14sp"
-            app:autoSizeStepGranularity="2sp"
+            app:autoSizeMaxTextSize="60sp"
+            app:autoSizeMinTextSize="20sp"
             app:autoSizeTextType="uniform" />
 
     </LinearLayout>
@@ -131,9 +127,8 @@
         android:gravity="center_horizontal"
         android:text="@string/best_result_15_steps_in_victory_dialog"
         android:textColor="#306D18"
-        app:autoSizeMaxTextSize="28sp"
-        app:autoSizeMinTextSize="12sp"
-        app:autoSizeStepGranularity="2sp"
+        app:autoSizeMaxTextSize="48sp"
+        app:autoSizeMinTextSize="18sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toTopOf="@+id/best_result_bottom_guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,8 +141,8 @@
         android:id="@+id/home_button_textview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
@@ -160,8 +155,8 @@
         android:paddingHorizontal="5dp"
         android:text="@string/home_in_victory_dialog"
         android:textColor="#393939"
-        app:autoSizeMaxTextSize="18sp"
-        app:autoSizeMinTextSize="10sp"
+        app:autoSizeMaxTextSize="24sp"
+        app:autoSizeMinTextSize="12sp"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline27"
@@ -207,8 +202,8 @@
             android:maxLines="1"
             android:text="@string/play_again_in_victory_dialog"
             android:textColor="#ffffff"
-            app:autoSizeMaxTextSize="18sp"
-            app:autoSizeMinTextSize="10sp"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeMinTextSize="12sp"
             app:autoSizeTextType="uniform" />
 
     </LinearLayout>

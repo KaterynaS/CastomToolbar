@@ -1,16 +1,26 @@
 package com.example.castomtoolbar;
 
 import android.content.Intent;
+import android.graphics.BlendMode;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 public class MainActivity extends ToolbarActivity {
 
@@ -24,13 +34,10 @@ public class MainActivity extends ToolbarActivity {
     LinearLayout poleLinearLayout;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         appState = AppState.getInstance();
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -66,6 +73,9 @@ public class MainActivity extends ToolbarActivity {
             }
         });
     }
+
+
+
 
     @Override
     public int getMenuResourceID() {

@@ -19,10 +19,8 @@
         android:id="@+id/tutorial_textview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fontFamily="@font/arial"
         android:text="@string/tutorial_text_2"
-        android:textColor="#2B6B2E"
-        android:textSize="30sp"
+        style="@style/tutorial_text_style"
         app:layout_constraintBottom_toTopOf="@+id/guideline16"
         app:layout_constraintEnd_toStartOf="@+id/guideline15"
         app:layout_constraintStart_toStartOf="@+id/guideline14"
@@ -33,14 +31,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.07" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.7298637" />
+        app:layout_constraintGuide_percent="0.93" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline16"

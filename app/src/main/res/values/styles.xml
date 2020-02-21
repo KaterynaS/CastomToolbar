@@ -35,5 +35,27 @@
 
     </style>
 
+    <style name="tutorial_text_style">
+        <item name="android:fontFamily">@font/arial</item>
+        <item name="android:textColor">#006cb5</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="tutorial_buttons_style">
+        <item name="android:background">@drawable/tutorial_btn_got_it</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+
+
+        <item name="android:fontFamily">@font/arial</item>
+        <item name="android:textColor">#006cb5</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
 
 </resources>
