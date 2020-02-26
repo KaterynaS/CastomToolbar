@@ -16,12 +16,11 @@
 
 
     <!-- victory dialog -->
-    <string name="congrat_message">Congratulations!</string>
     <string name="best_result_in_victory_dialog">Best result:</string>
-    <string name="your_result_in_victory_dialog">Your result:</string>
     <string name="moves_in_victory_dialog">moves</string>
     <string name="home_in_victory_dialog">Home</string>
     <string name="play_again_in_victory_dialog">Play again</string>
+    <string name="next_level_in_victory_dialog">Next level</string>
     <string name="best_result_15_steps_in_victory_dialog">best result 15 steps</string>
     <string name="you_did_it_in_victory_dialog">You did it in</string>
     <string name="you_won_victory_dialog">YOU WON!</string>

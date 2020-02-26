@@ -10,7 +10,6 @@
     <string name="skip">ПРОПУСТИТЬ</string>
     <string name="next">СЛЕДУЮЩАЯ</string>
     <string name="start">ВСЁ ЯСНО</string>
-    <string name="your_result_in_victory_dialog">Ваш результат:</string>
     <string name="home_in_victory_dialog">На главную</string>
     <string name="play_again_in_victory_dialog">Играть ещё</string>
     <string name="you_did_it_in_victory_dialog">"Вы сделали это за "</string>
@@ -20,7 +19,7 @@
     <string name="tutorial_text_3">Постарайтесь достать угощение за минимум шагов</string>
     <string name="stage">подставка</string>
     <string name="logo_on_main">логотип</string>
-    <string name="congrat_message">Поздравляем!</string>
     <string name="cloud_with_sign">тучка со знаком</string>
     <string name="best_result_15_steps_in_victory_dialog">лучший результат 15 шагов</string>
+    <string name="next_level_in_victory_dialog">Следующий уровень</string>
 </resources>

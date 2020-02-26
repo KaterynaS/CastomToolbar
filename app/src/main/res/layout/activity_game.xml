@@ -35,14 +35,12 @@
 
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_left_of_right_target"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_right_of_right_target"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -104,7 +102,6 @@
         app:layout_constraintGuide_percent="0.92" />
 
     <ImageView
-        android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -119,7 +116,6 @@
         app:srcCompat="@drawable/stage" />
 
     <ImageView
-        android:id="@+id/imageView3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -134,7 +130,6 @@
         app:srcCompat="@drawable/stage" />
 
     <ImageView
-        android:id="@+id/imageView4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

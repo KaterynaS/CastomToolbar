@@ -16,7 +16,6 @@
 
 
     <TextView
-        android:id="@+id/tutorial_textview"
         style="@style/tutorial_text_style"
         android:layout_width="0dp"
         android:layout_height="0dp"

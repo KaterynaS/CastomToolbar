@@ -8,7 +8,6 @@
 
 
     <LinearLayout
-        android:id="@+id/info_text_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,13 +15,11 @@
 
 
         <TextView
-            android:id="@+id/margin_top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2" />
 
         <TextView
-            android:id="@+id/you_won_textView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal|center_vertical"
@@ -40,14 +37,12 @@
             app:autoSizeTextType="uniform" />
 
         <TextView
-            android:id="@+id/margin_youwin_steps"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2" />
 
 
         <LinearLayout
-            android:id="@+id/you_did_it_steps_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8"
@@ -55,7 +50,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/you_did_it_textview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
@@ -86,7 +80,6 @@
 
 
             <TextView
-                android:id="@+id/moves_textview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
@@ -102,7 +95,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/margin_youdidit_best"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2" />
@@ -122,14 +114,12 @@
             app:autoSizeTextType="uniform" />
 
         <TextView
-            android:id="@+id/margin_best_buttons"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
         <!-- buttons linear layout -->
         <LinearLayout
-            android:id="@+id/buttons_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
@@ -181,7 +171,7 @@
                     android:src="@drawable/ic_replay_white_24dp" />
 
                 <TextView
-                    android:id="@+id/play_agian_button_textview"
+                    android:id="@+id/next_level_button_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arial"
@@ -199,7 +189,6 @@
 
 
         <TextView
-            android:id="@+id/margin_bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />

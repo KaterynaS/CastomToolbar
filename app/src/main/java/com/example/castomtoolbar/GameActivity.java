@@ -1,5 +1,6 @@
 package com.example.castomtoolbar;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Context;
@@ -63,6 +64,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
     private int currentGameBestResult;
 
+    Activity mActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +86,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         uhahSoundMediaPlayer = MediaPlayer.create(this, R.raw.uh_oh);
         context = GameActivity.this;
 
+        mActivity = GameActivity.this;
 
         findViews();
 
@@ -90,7 +94,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         setOnListeners();
 
-        //measureDisksContainer();
         createTower();
     }
 
@@ -133,7 +136,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     private void createTower() {
         GameAttributes ga = new GameAttributes();
         //fill starting pole with corresponding amount of disks
-        for (int i = appState.getNumberOfDisks()-1; i >= 0; i--) {
+        for (int i = appState.getCurrentLevel()-1; i >= 0; i--) {
             //create an text view of a disk, starting with the biggest
 
             //todo set target_1_imageview size as a disk height
@@ -148,7 +151,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
-            if(i == appState.getNumberOfDisks()-1) { diskParams.setMargins(0,-5,0,0); }
+            if(i == appState.getCurrentLevel()-1) { diskParams.setMargins(0,-5,0,0); }
             else {diskParams.setMargins(0,-10,0,0);}
             imageDisk.setLayoutParams(diskParams);
 
@@ -172,7 +175,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
             //"measure" the pyramid and adjust target fruit height
-            int pyramidHeight = maxDiscHeightInPx * appState.getNumberOfDisks();
+            int pyramidHeight = maxDiscHeightInPx * appState.getCurrentLevel();
             int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
 
             Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
@@ -233,7 +236,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                 GameAttributes ga = new GameAttributes();
 
                 //biggest disk of the level w and h in px
-                int level = appState.numberOfDisks;
+                int level = appState.currentLevel;
 
                 Drawable biggestDiskOnLevel = getResources().getDrawable(ga.disksImgResourcesList[level-1]);
                 int biggestDiskOnLevelH = biggestDiskOnLevel.getIntrinsicHeight();
@@ -271,7 +274,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
 
-                for (int i = appState.getNumberOfDisks()-1; i >= 0; i--) {
+                for (int i = appState.getCurrentLevel()-1; i >= 0; i--) {
                     //create an text view of a disk, starting with the biggest
 
                     final ImageView imageDisk = new ImageView(getApplicationContext());
@@ -290,7 +293,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
                     LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
-                    if(i == appState.getNumberOfDisks()-1) { diskParams.setMargins(0,-5,0,0); }
+                    if(i == appState.getCurrentLevel()-1) { diskParams.setMargins(0,-5,0,0); }
                     else {diskParams.setMargins(0,-10,0,0);}
                     imageDisk.setLayoutParams(diskParams);
 
@@ -314,7 +317,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
                     //"measure" the pyramid and adjust target fruit height
-                    int pyramidHeight = maxDiscHeightInPx * appState.getNumberOfDisks();
+                    int pyramidHeight = maxDiscHeightInPx * appState.getCurrentLevel();
                     int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
 
                     Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
@@ -340,16 +343,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
                     appState.resetSteps();
                 }
-
-
-
-
             }
         });
-
-
-
-
     }
 
 
@@ -357,14 +352,32 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     {
         saveResult();
 
+        int currentLvl = appState.currentLevel;
+        int maxLevel;
+
         AlertDialog.Builder builder
                 = new AlertDialog.Builder(GameActivity.this, R.style.CustomAlertDialogStyle);
-        View view = getLayoutInflater().inflate(R.layout.dialog_solid_background, null);
-
-
+        final View view = getLayoutInflater().inflate(R.layout.dialog_solid_background, null);
 
         final AlertDialog dialog = builder.create();
         dialog.setView(view, 0, 0, 0, 0);
+
+
+        TextView buttonText = view.findViewById(R.id.next_level_button_textview);
+        ImageView circleArrow = view.findViewById(R.id.circle_arrow_imageview);
+
+        GameAttributes attributes = new GameAttributes();
+        maxLevel = attributes.getMaxLevel();
+
+        if(currentLvl == maxLevel)
+        {
+            circleArrow.setVisibility(View.VISIBLE);
+            buttonText.setText(R.string.play_again_in_victory_dialog);
+        }
+        else if (currentLvl < maxLevel)
+        {
+            currentLvl = currentLvl + 1;
+        }
 
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -374,7 +387,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         double dialogWidth;
         double dialogHeight;
-
 
         if(screenHeightPixels < 1500)
         {
@@ -408,9 +420,14 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         });
 
         LinearLayout playAgainButton = view.findViewById(R.id.play_again_button_linearlayout);
+
+
+
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 restartGame();
                 dialog.dismiss();
             }
@@ -419,6 +436,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             mainParentLayout.setForeground(new ColorDrawable(getColor(R.color.dim_background)));
         }
+
         mainParentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -427,7 +445,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     mainParentLayout.setForeground(new ColorDrawable(Color.TRANSPARENT));
                 }
-
             }
         });
 
@@ -445,6 +462,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         movesTextview.setText(appState.stepsTaken + "");
         bestMovesTextview.setText(getResources().getString(R.string.best_result_in_victory_dialog)
                 + " " + b + " " +  getResources().getString(R.string.moves_in_victory_dialog));
+
+        appState.setCurrentLevel(currentLvl);
     }
 
     public int pxToDp(int px) {
@@ -550,8 +569,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     private boolean isOrderCorrect() {
         boolean isCorrect = false;
 
-        if(targetPole.getChildCount() == appState.getNumberOfDisks()
-                || helpPole.getChildCount() == appState.getNumberOfDisks())
+        if(targetPole.getChildCount() == appState.getCurrentLevel()
+                || helpPole.getChildCount() == appState.getCurrentLevel())
         {
             isCorrect = true;
         }
@@ -579,13 +598,33 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
     @Override
     public void restartGame() {
-        //counter = 0;
-        Log.d("GameActivity", "restartGame");
-        clearPoles();
-        createTower();
-        updateStepsCounterTextview();
-        //todo
+//        //counter = 0;
+//        Log.d("GameActivity", "restartGame");
+//        appState = AppState.getInstance();
+//        clearPoles();
+//        placeTargets();
+//        setOnListeners();
+//        createTower();
+//
+//        updateStepsCounterTextview();
+//        //todo
+        restartActivity();
     }
+
+
+    public void restartActivity() {
+
+        Activity activity = GameActivity.this;
+
+        if (Build.VERSION.SDK_INT >= 11) {
+            activity.recreate();
+        } else {
+            activity.finish();
+            activity.startActivity(activity.getIntent());
+        }
+    }
+
+
 
     private void clearPoles() {
         startPole.removeAllViews();
@@ -703,7 +742,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-        switch (appState.getNumberOfDisks()) {
+        switch (appState.getCurrentLevel()) {
             case 3:
                 currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_3_DISCS, 0);
                 if (currentGameBestResult == 0 || currentGameBestResult > appState.getStepsTaken())
@@ -749,7 +788,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
     public int getBestResult() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
-        switch (appState.getNumberOfDisks()) {
+        switch (appState.getCurrentLevel()) {
             case 3:
                 currentGameBestResult = sharedPreferences.getInt(BEST_RESULT_3_DISCS, 0);
                 break;

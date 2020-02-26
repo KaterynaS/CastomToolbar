@@ -5,7 +5,6 @@ public class GameAttributes {
     int[] disksImgResourcesList;
     int[] targetImgResourceList;
 
-
     public GameAttributes() {
         disksImgResourcesList = new int[]{
                 R.drawable.kawai_1, R.drawable.kawai_2,
@@ -20,5 +19,10 @@ public class GameAttributes {
                 R.drawable.treat_cloud_watermelon,
                 R.drawable.treat_cloud_fish
         };
+    }
+
+    public int getMaxLevel()
+    {
+        return disksImgResourcesList.length;
     }
 }

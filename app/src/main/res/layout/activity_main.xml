@@ -30,7 +30,6 @@
 
 
     <LinearLayout
-        android:id="@+id/pyramid_builder_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:baselineAligned="false"
@@ -75,7 +74,6 @@
 
 
     <ImageView
-        android:id="@+id/stage_imageView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -153,7 +151,6 @@
     -->
 
     <TextView
-        android:id="@+id/textView_hard"
         style="@android:style/TextAppearance.DeviceDefault.Large"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -175,7 +172,6 @@
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
     <TextView
-        android:id="@+id/textView_easy"
         style="@android:style/TextAppearance.DeviceDefault.Large"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -195,7 +191,6 @@
         app:layout_constraintTop_toTopOf="@+id/minus_button" />
 
     <ImageView
-        android:id="@+id/cloud_with_sign_imageview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/cloud_with_sign"
@@ -207,7 +202,6 @@
 
 
     <ImageView
-        android:id="@+id/logo_imageview"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="-8dp"
@@ -227,7 +221,6 @@
         app:layout_constraintGuide_percent="0.32" />
 
     <TextView
-        android:id="@+id/choose_level_textview"
         style="@android:style/TextAppearance.DeviceDefault.Large"
         android:layout_width="0dp"
         android:layout_height="0dp"

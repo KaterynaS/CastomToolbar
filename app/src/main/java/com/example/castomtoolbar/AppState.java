@@ -3,7 +3,7 @@ package com.example.castomtoolbar;
 public class AppState {
 
     boolean soundOn = true;
-    int numberOfDisks;
+    int currentLevel;
     int stepsTaken = 0;
     private int screenWidth;
     private int screenHeight;
@@ -56,12 +56,12 @@ public class AppState {
         stepsTaken++;
     }
 
-    public int getNumberOfDisks() {
-        return numberOfDisks;
+    public int getCurrentLevel() {
+        return currentLevel;
     }
 
-    public void setNumberOfDisks(int numberOfDisks) {
-        this.numberOfDisks = numberOfDisks;
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
     }
 
     public void turnSound()

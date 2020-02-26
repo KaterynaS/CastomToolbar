@@ -8,7 +8,6 @@
 
 
     <LinearLayout
-        android:id="@+id/info_text_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,7 +15,6 @@
 
 
         <TextView
-            android:id="@+id/you_won_textView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center_horizontal|center_vertical"
@@ -36,7 +34,6 @@
 
 
         <LinearLayout
-            android:id="@+id/you_did_it_steps_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8"
@@ -45,7 +42,6 @@
             android:paddingTop="6dp">
 
             <TextView
-                android:id="@+id/you_did_it_textview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
@@ -76,7 +72,6 @@
 
 
             <TextView
-                android:id="@+id/moves_textview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="7"
@@ -109,7 +104,6 @@
 
         <!-- buttons linear layout -->
         <LinearLayout
-            android:id="@+id/buttons_linearlayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="end"
@@ -129,10 +123,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/victory_home_button"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/victory_dialog_home_button_selectable_background"
                 android:gravity="center_horizontal|center_vertical"
                 android:paddingHorizontal="5dp"
                 android:text="@string/home_in_victory_dialog"
@@ -150,26 +141,25 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="9dp"
                 android:layout_marginRight="16dp"
-                android:background="@drawable/victory_play_again_button"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:background="@drawable/victory_dialog_next_level_button_selectable_background"
                 android:gravity="center_horizontal|center_vertical"
                 android:orientation="horizontal"
                 android:paddingHorizontal="5dp">
 
                 <ImageView
+                    android:id="@+id/circle_arrow_imageview"
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_replay_white_24dp" />
 
                 <TextView
-                    android:id="@+id/play_agian_button_textview"
+                    android:id="@+id/next_level_button_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arial"
                     android:maxLines="1"
-                    android:text="@string/play_again_in_victory_dialog"
+                    android:text="@string/next_level_in_victory_dialog"
                     android:textColor="#ffffff"
                     app:autoSizeMaxTextSize="18sp"
                     app:autoSizeMinTextSize="12sp"
