@@ -1,6 +1,7 @@
 package com.example.castomtoolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -14,7 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends ToolbarActivity {
 
-    ImageButton playButton;
+    ImageView playButton;
     Toolbar toolbarMain;
     AppState appState;
 
@@ -27,9 +28,12 @@ public class MainActivity extends ToolbarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         appState = AppState.getInstance();
+
+        // Checking for first time launch - before calling setContentView()
+        setContentView(R.layout.activity_main);
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int screenHeight = displayMetrics.heightPixels;
@@ -63,8 +67,6 @@ public class MainActivity extends ToolbarActivity {
             }
         });
     }
-
-
 
 
     @Override
@@ -135,7 +137,7 @@ public class MainActivity extends ToolbarActivity {
             imageDisk.setTag(""+i);
 
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
-            diskParams.setMargins(0,-4,0,0);
+            diskParams.setMargins(0,-5,0,-3);
             imageDisk.setLayoutParams(diskParams);
 
             //add view to the pole

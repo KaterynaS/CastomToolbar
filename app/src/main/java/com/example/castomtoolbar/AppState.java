@@ -8,11 +8,11 @@ public class AppState {
     private int screenWidth;
     private int screenHeight;
 
-
     int container_max_w; //left screen edge to guideline_vertical_left
     int container_max_h; //guideline_horizontal_bottom to guideline_horizontal_top
 
 
+    boolean isFirstLaunch = true; //0 - yes, true
 
     private AppState() {
     }
@@ -26,6 +26,13 @@ public class AppState {
         return(instance);
     }
 
+    public void setIsFirstLaunch(boolean isFirstLaunch) {
+        this.isFirstLaunch = isFirstLaunch;
+    }
+
+    public boolean isFirstLaunch() {
+        return isFirstLaunch;
+    }
 
     public int getContainer_max_w() {
         return container_max_w;

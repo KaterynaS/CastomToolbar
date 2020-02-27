@@ -151,8 +151,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
-            if(i == appState.getCurrentLevel()-1) { diskParams.setMargins(0,-5,0,0); }
-            else {diskParams.setMargins(0,-10,0,0);}
+            if(i == appState.getCurrentLevel()-1) { diskParams.setMargins(0,-5,0,-3); }
+            else {diskParams.setMargins(0,-10,0,-3);}
             imageDisk.setLayoutParams(diskParams);
 
             imageDisk.setTag(""+i);
@@ -466,10 +466,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         appState.setCurrentLevel(currentLvl);
     }
 
-    public int pxToDp(int px) {
-        DisplayMetrics displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
-        return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
-    }
 
     private void setOnListeners() {
         startPole.setOnDragListener(this);

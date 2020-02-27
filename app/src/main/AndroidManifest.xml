@@ -33,6 +33,7 @@
             android:label="Kawai Game"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="landscape" />
+
         <activity
             android:name=".ToolbarActivity"
             android:screenOrientation="landscape"

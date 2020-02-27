@@ -36,8 +36,8 @@ public abstract class ToolbarActivity extends AppCompatActivity {
     public void openHelpPage()
     {
         //todo open help slider https://www.javatpoint.com/android-introduction-slider-example
-        Intent welcome = new Intent(getApplicationContext(), RulesActivity.class);
-        startActivity(welcome);
+        Intent tutorial = new Intent(getApplicationContext(), RulesActivity.class);
+        startActivity(tutorial);
     }
 
     public abstract int getMenuResourceID();
