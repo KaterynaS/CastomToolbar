@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".GameActivity">
+    tools:context="com.kateandyana.hanoi_tower.GameActivity">
 
 
     <include
@@ -109,6 +109,7 @@
         android:layout_marginTop="-3dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:contentDescription="@string/starting_stand"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_left"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,6 +124,7 @@
         android:layout_marginTop="-2dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:contentDescription="@string/target_stand_one"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
@@ -137,6 +139,7 @@
         android:layout_marginTop="-5dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:contentDescription="@string/target_stand_two"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right"
@@ -154,6 +157,7 @@
         android:id="@+id/target_1_imageview"
         android:layout_width="90dp"
         android:layout_height="90dp"
+        android:contentDescription="@string/target_treat_one"
         app:layout_constraintBottom_toTopOf="@id/guideline_horizontal_top"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
@@ -164,6 +168,7 @@
         android:id="@+id/target_2_imageview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/target_treat_two"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal_top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_right"

@@ -1,4 +1,4 @@
-package com.example.castomtoolbar;
+package com.kateandyana.hanoi_tower;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
+
+import com.kateandyana.hanoi_tower.R;
 
 public abstract class ToolbarActivity extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
     public void openHelpPage()
     {
         //todo open help slider https://www.javatpoint.com/android-introduction-slider-example
-        Intent tutorial = new Intent(getApplicationContext(), RulesActivity.class);
+        Intent tutorial = new Intent(getApplicationContext(), TutorialActivity.class);
         startActivity(tutorial);
     }
 

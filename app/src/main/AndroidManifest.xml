@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.castomtoolbar"
+    package="com.kateandyana.hanoi_tower"
     android:installLocation="preferExternal">
 
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <supports-screens
+        android:smallScreens="false"
+        android:normalScreens="true"
+        android:xlargeScreens="false"
+    />
+
 
     <application
         android:allowBackup="true"
@@ -16,11 +21,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".RulesActivity"
-            android:screenOrientation="landscape" />
+            android:name="com.kateandyana.hanoi_tower.TutorialActivity"
+            android:screenOrientation="landscape" >
+
+            <intent-filter android:label="How to play hanoi tower">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="www.kateandyana.com"
+                    android:pathPrefix="/hanoi_tower" />
+            </intent-filter>
+
+        </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="Kawai Towers"
+            android:name="com.kateandyana.hanoi_tower.MainActivity"
+
+            android:label="Hanoi Tower"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,13 +46,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameActivity"
-            android:label="Kawai Game"
-            android:parentActivityName=".MainActivity"
+            android:name="com.kateandyana.hanoi_tower.GameActivity"
+            android:label="Hanoi Tower Game"
+            android:parentActivityName="com.kateandyana.hanoi_tower.MainActivity"
             android:screenOrientation="landscape" />
 
         <activity
-            android:name=".ToolbarActivity"
+            android:name="com.kateandyana.hanoi_tower.ToolbarActivity"
             android:screenOrientation="landscape"
             android:theme="@style/ToolbarTheme" />
 

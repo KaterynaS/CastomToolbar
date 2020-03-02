@@ -17,12 +17,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
             android:layout_marginRight="-1dp"
             android:layout_weight="8"
-            android:elegantTextHeight="true"
             android:fontFamily="@font/ar_carter_font"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:paddingTop="6dp"
             android:text="@string/you_won_victory_dialog"
             android:textColor="#DD1515"
@@ -30,7 +29,8 @@
             app:autoSizeMaxTextSize="80sp"
             app:autoSizeMinTextSize="18sp"
             app:autoSizeStepGranularity="2sp"
-            app:autoSizeTextType="uniform" />
+            app:autoSizeTextType="uniform"
+            android:layout_marginEnd="-1dp" />
 
 
         <LinearLayout
@@ -46,7 +46,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:fontFamily="@font/ar_carter_font"
-                android:gravity="right|center_vertical"
+                android:gravity="end|center_vertical"
                 android:maxLines="1"
                 android:text="@string/you_did_it_in_victory_dialog"
                 app:autoSizeMaxTextSize="48sp"
@@ -58,12 +58,13 @@
                 android:id="@+id/number_of_moves_textview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/ar_carter_font"
-                android:gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:maxLines="1"
-                android:text="20"
+                android:text="@string/number_of_moves"
                 android:textColor="#29732C"
                 app:autoSizeMaxTextSize="48sp"
                 app:autoSizeMinTextSize="16sp"
@@ -76,7 +77,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:fontFamily="@font/ar_carter_font"
-                android:gravity="left|center_vertical"
+                android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:text="@string/moves_in_victory_dialog"
                 app:autoSizeMaxTextSize="48sp"
@@ -111,6 +112,7 @@
             android:gravity="end|center_vertical"
             android:orientation="horizontal"
             android:padding="2dp"
+            android:paddingLeft="8dp"
             android:paddingTop="6dp"
             android:paddingEnd="8dp"
             android:paddingRight="8dp"
@@ -124,8 +126,9 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:background="@drawable/victory_dialog_home_button_selectable_background"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingHorizontal="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
                 android:text="@string/home_in_victory_dialog"
                 android:textColor="#393939"
                 app:autoSizeMaxTextSize="16sp"
@@ -142,16 +145,18 @@
                 android:layout_marginEnd="9dp"
                 android:layout_marginRight="16dp"
                 android:background="@drawable/victory_dialog_next_level_button_selectable_background"
-                android:gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="5dp">
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp">
 
                 <ImageView
                     android:id="@+id/circle_arrow_imageview"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_replay_white_24dp" />
+                    android:contentDescription="@string/circle_arrow"
+                    android:src="@drawable/ic_replay_white_24dp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/next_level_button_textview"

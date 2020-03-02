@@ -1,10 +1,8 @@
-package com.example.castomtoolbar;
+package com.kateandyana.hanoi_tower;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,14 +11,16 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.kateandyana.hanoi_tower.R;
+
 public class MainActivity extends ToolbarActivity {
 
-    ImageView playButton;
+    ImageButton playButton;
     Toolbar toolbarMain;
     AppState appState;
 
-    Button addDiskButton;
-    Button subtractDiskButton;
+    ImageButton addDiskButton;
+    ImageButton subtractDiskButton;
     int currentNumberOfDisks = 3; //from 3 to 7
     LinearLayout poleLinearLayout;
 
@@ -117,9 +117,6 @@ public class MainActivity extends ToolbarActivity {
     {
         int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.55 - 16);
         int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.75 - 48)/7;
-        Log.d("updateDiskPyramid", "\nmaxDiscWidthInPx = " + maxDiscWidthInPx
-                + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
-
 
         poleLinearLayout.removeAllViews();
         //update pyramid appearance
@@ -127,10 +124,6 @@ public class MainActivity extends ToolbarActivity {
         //fill starting pole with corresponding amount of disks
         for (int i = currentNumberOfDisks-1; i >= 0; i--)
         {
-            //create an text view of a disk, starting with the biggest
-
-            //todo calculate max W (% of screen W) and max H (% of screen H - toolbarH)/7
-            //todo set Layout Params for every disc to restrict sizes, and save aspect ratio
 
             ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));

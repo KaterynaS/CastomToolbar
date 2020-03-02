@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Kawai Towers</string>
+    <string name="app_name">Ханойские башни</string>
     <string name="best_result_in_victory_dialog">Лучший результат:</string>
     <string name="choose_level">Выберите уровень</string>
     <string name="easy">легко</string>
@@ -22,4 +22,16 @@
     <string name="cloud_with_sign">тучка со знаком</string>
     <string name="best_result_15_steps_in_victory_dialog">лучший результат 15 шагов</string>
     <string name="next_level_in_victory_dialog">Следующий уровень</string>
+    <string name="play_button">кнопка играть</string>
+    <string name="add_one_disk">добавить один диск</string>
+    <string name="circle_arrow">круговая стрелка</string>
+    <string name="starting_stand">стартовая платформа</string>
+    <string name="subtract_one_disk">убрать один диск</string>
+    <string name="target_stand_one">целевая платформа один</string>
+    <string name="target_stand_two">целевая платформа два</string>
+    <string name="target_treat_one">цель один</string>
+    <string name="target_treat_two">цель два</string>
+    <string name="tutorial_image_step_one">туториал слайд один</string>
+    <string name="tutorial_slide_three">туториал слайд три</string>
+    <string name="tutorial_slide_two">туториал слайд два</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.castomtoolbar;
+package com.kateandyana.hanoi_tower;
 
 import org.junit.Test;
 

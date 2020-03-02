@@ -1,4 +1,6 @@
-package com.example.castomtoolbar;
+package com.kateandyana.hanoi_tower;
+
+import com.kateandyana.hanoi_tower.R;
 
 public class GameAttributes {
 

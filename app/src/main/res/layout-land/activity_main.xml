@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:clipToPadding="false"
-    tools:context=".MainActivity">
+    tools:context="com.kateandyana.hanoi_tower.MainActivity">
 
 
     <include
@@ -16,17 +16,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/play_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-        android:foreground="@drawable/play_button_selectable_background"
+        android:contentDescription="@string/play_button"
+        android:src="@drawable/play_button_selectable_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline19"
-        app:layout_constraintTop_toTopOf="@+id/guideline18" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
 
     <LinearLayout
@@ -64,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.95" />
 
 
     <ImageView
@@ -102,40 +103,34 @@
         app:layout_constraintGuide_percent="0.12" />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/plus_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/transparent"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:foreground="@drawable/plus_button_selectable_background"
-
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/add_one_disk"
+        android:src="@drawable/plus_button_selectable_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"></Button>
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
-    <Button
+    <ImageButton
         android:id="@+id/minus_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/transparent"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:foreground="@drawable/minus_button_selectable_background"
-
-
-        app:layout_constraintDimensionRatio="1:1"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/subtract_one_disk"
+        android:src="@drawable/minus_button_selectable_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
-    <!--
-
-        android:background="@drawable/btn_minus_idle"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-    -->
 
     <TextView
         style="@android:style/TextAppearance.DeviceDefault.Large"
@@ -144,7 +139,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/arial"
-        android:gravity="start|left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/hard"
         android:textColor="@color/text_on_main_color"
         android:textSize="36sp"
@@ -165,7 +160,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/arial"
-        android:gravity="start|left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/easy"
         android:textColor="@color/text_on_main_color"
         android:textStyle="bold"

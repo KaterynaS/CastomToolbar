@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/victory_dialog_background"
     android:orientation="vertical">
 
@@ -17,29 +17,20 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal|center_vertical"
+            android:layout_gravity="center"
             android:layout_marginRight="-1dp"
             android:layout_weight="8"
-            android:elegantTextHeight="true"
             android:fontFamily="@font/ar_carter_font"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
+            android:paddingTop="6dp"
             android:text="@string/you_won_victory_dialog"
             android:textColor="#DD1515"
             android:textStyle="bold"
             app:autoSizeMaxTextSize="80sp"
             app:autoSizeMinTextSize="18sp"
             app:autoSizeStepGranularity="2sp"
-            app:autoSizeTextType="uniform" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
+            app:autoSizeTextType="uniform"
+            android:layout_marginEnd="-1dp" />
 
 
         <LinearLayout
@@ -47,14 +38,15 @@
             android:layout_height="0dp"
             android:layout_weight="8"
             android:gravity="center_horizontal"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="6dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="8"
                 android:fontFamily="@font/ar_carter_font"
-                android:gravity="right|center_vertical"
+                android:gravity="end|center_vertical"
                 android:maxLines="1"
                 android:text="@string/you_did_it_in_victory_dialog"
                 app:autoSizeMaxTextSize="48sp"
@@ -66,12 +58,13 @@
                 android:id="@+id/number_of_moves_textview"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/ar_carter_font"
-                android:gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:maxLines="1"
-                android:text="20"
+                android:text="@string/number_of_moves"
                 android:textColor="#29732C"
                 app:autoSizeMaxTextSize="48sp"
                 app:autoSizeMinTextSize="16sp"
@@ -84,7 +77,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="7"
                 android:fontFamily="@font/ar_carter_font"
-                android:gravity="left|center_vertical"
+                android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:text="@string/moves_in_victory_dialog"
                 app:autoSizeMaxTextSize="48sp"
@@ -95,17 +88,13 @@
         </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2" />
-
-        <TextView
             android:id="@+id/best_result_textview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="7"
             android:fontFamily="@font/ar_carter_font"
             android:gravity="center_horizontal"
+            android:paddingTop="6dp"
             android:text="@string/best_result_15_steps_in_victory_dialog"
             android:textColor="#306D18"
             app:autoSizeMaxTextSize="28sp"
@@ -113,22 +102,21 @@
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
         <!-- buttons linear layout -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_gravity="end"
             android:layout_weight="7"
             android:gravity="end|center_vertical"
-            android:layout_gravity="end"
             android:orientation="horizontal"
             android:padding="2dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="6dp"
             android:paddingEnd="8dp"
-            android:paddingRight="8dp">
+            android:paddingRight="8dp"
+            android:paddingBottom="6dp">
 
 
             <TextView
@@ -137,17 +125,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/victory_home_button"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center_horizontal|center_vertical"
-                android:paddingHorizontal="5dp"
+                android:background="@drawable/victory_dialog_home_button_selectable_background"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp"
                 android:text="@string/home_in_victory_dialog"
                 android:textColor="#393939"
-                app:autoSizeMaxTextSize="18sp"
-                app:autoSizeMinTextSize="12sp"
-                app:autoSizeTextType="uniform"
-                android:focusable="true" />
+                app:autoSizeMaxTextSize="16sp"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform" />
 
 
             <LinearLayout
@@ -157,18 +144,19 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="9dp"
                 android:layout_marginRight="16dp"
-                android:background="@drawable/victory_play_again_button"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center_horizontal|center_vertical"
+                android:background="@drawable/victory_dialog_next_level_button_selectable_background"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="5dp"
-                android:focusable="true">
+                android:paddingRight="5dp"
+                android:paddingLeft="5dp">
 
                 <ImageView
+                    android:id="@+id/circle_arrow_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_replay_white_24dp" />
+                    android:contentDescription="@string/circle_arrow"
+                    android:src="@drawable/ic_replay_white_24dp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/next_level_button_textview"
@@ -176,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arial"
                     android:maxLines="1"
-                    android:text="@string/play_again_in_victory_dialog"
+                    android:text="@string/next_level_in_victory_dialog"
                     android:textColor="#ffffff"
                     app:autoSizeMaxTextSize="18sp"
                     app:autoSizeMinTextSize="12sp"
@@ -187,11 +175,6 @@
 
         </LinearLayout>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
 
     </LinearLayout>
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:clipToPadding="false"
-    tools:context=".MainActivity">
+    tools:context="com.kateandyana.hanoi_tower.MainActivity">
 
 
     <include
@@ -21,33 +21,28 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/transparent"
-        android:foreground="@drawable/play_button_selectable_background"
+        android:contentDescription="@string/play_button"
+        android:src="@drawable/play_button_selectable_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_right"
-        app:layout_constraintStart_toStartOf="@+id/guideline19"
-        app:layout_constraintTop_toTopOf="@+id/guideline18" />
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" />
 
 
     <LinearLayout
+        android:id="@+id/pole_linear_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="-5dp"
         android:baselineAligned="false"
         android:gravity="bottom|center_horizontal"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
         app:layout_constraintEnd_toStartOf="@+id/guideline_vertical_middle"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
-        app:layout_constraintTop_toTopOf="@+id/guideline2">
+        app:layout_constraintTop_toBottomOf="@id/toolbar_widget">
 
-        <LinearLayout
-            android:id="@+id/pole_linear_layout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:gravity="bottom|center_horizontal"
-            android:orientation="vertical" />
 
     </LinearLayout>
 
@@ -56,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.91" />
+        app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vertical_middle"
@@ -70,19 +65,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.95" />
 
 
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="-25dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         android:contentDescription="@string/stage"
-        android:foregroundGravity="top"
+        android:foregroundGravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/guideline_vertical_middle"
         app:layout_constraintStart_toStartOf="@+id/guideline_vertical_left"
@@ -107,48 +103,34 @@
         app:layout_constraintGuide_percent="0.12" />
 
 
-    <Button
+    <ImageButton
         android:id="@+id/plus_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal|center_vertical"
-
-
-        android:foreground="@drawable/plus_button_selectable_background"
-        app:elevation="8dp"
-
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/add_one_disk"
+        android:src="@drawable/plus_button_selectable_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"></Button>
+        app:layout_constraintTop_toTopOf="@+id/guideline8" />
 
-    <!--
-        android:background="@drawable/btn_plus_idle"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-    -->
-
-
-    <Button
+    <ImageButton
         android:id="@+id/minus_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
-
-
-
+        android:layout_gravity="center_horizontal|center_vertical"
         android:background="@android:color/transparent"
-        android:foreground="@drawable/minus_button_selectable_background"
-        app:layout_constraintDimensionRatio="1:1"
+        android:contentDescription="@string/subtract_one_disk"
+        android:src="@drawable/minus_button_selectable_background"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toTopOf="@+id/guideline10" />
 
-    <!--
-
-        android:background="@drawable/btn_minus_idle"
-        android:foreground="?android:attr/selectableItemBackgroundBorderless"
-    -->
 
     <TextView
         style="@android:style/TextAppearance.DeviceDefault.Large"
@@ -157,7 +139,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/arial"
-        android:gravity="start|left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/hard"
         android:textColor="@color/text_on_main_color"
         android:textSize="36sp"
@@ -178,7 +160,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:fontFamily="@font/arial"
-        android:gravity="start|left|center_vertical"
+        android:gravity="start|center_vertical"
         android:text="@string/easy"
         android:textColor="@color/text_on_main_color"
         android:textStyle="bold"
@@ -296,7 +278,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.71" />
+        app:layout_constraintGuide_percent="0.7" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"

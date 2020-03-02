@@ -1,4 +1,4 @@
-package com.example.castomtoolbar;
+package com.kateandyana.hanoi_tower;
 
 import android.app.Activity;
 import android.content.ClipData;
@@ -8,12 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +25,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
+
+import com.kateandyana.hanoi_tower.R;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -116,9 +116,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         targetIndexes.remove(targetOneIndex);
         int targetTwoIndex = targetIndexes.get(rand.nextInt(targetIndexes.size()));
 
-        Log.d("placeTargets", "\ntargetOneIndex = " + targetOneIndex
-            + "\ntargetTwoIndex = " + targetTwoIndex);
-
         int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.7 - 48)/8;
 
         ConstraintLayout.LayoutParams targetOneLayoutParams = (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
@@ -146,8 +143,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
             int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.3 - 16); //16 is a left margin
             int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.7 - 48)/8; //48 is a toolbar height
-            Log.d("updateDiskPyramid", "\nmaxDiscWidthInPx = " + maxDiscWidthInPx
-                    + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
 
 
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
@@ -164,23 +159,9 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
             targetSlot1 = findViewById(R.id.target_1_imageview);
             targetSlot2 = findViewById(R.id.target_2_imageview);
-//
-/////////////////
-//            ConstraintLayout layout = (ConstraintLayout) targetSlot1.getParent(); //??
-//            ConstraintLayout.LayoutParams targetParams =
-//                    (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
-//            //targetParams.leftToLeft(guidelineVerticalRight);
-//            targetParams = new ConstraintLayout.LayoutParams(3*maxDiscHeightInPx/2, 3*maxDiscHeightInPx/2);
-//            targetSlot1.setLayoutParams(targetParams);
 
-
-            //"measure" the pyramid and adjust target fruit height
             int pyramidHeight = maxDiscHeightInPx * appState.getCurrentLevel();
             int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
-
-            Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
-            Log.d("measurements", "\npyramidHeight in px = " + pyramidHeight
-                    + "\npyramidHeightInPercentsOfScreenHeight = " + pyramidHeightInPercentsOfScreenHeight);
 
             guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
             ConstraintLayout.LayoutParams guidelineHorizontalBottomParams =
@@ -188,11 +169,8 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
             float guidelineHorizontalBottomHeightInPercents = guidelineHorizontalBottomParams.guidePercent;
-            Log.d("measurements", "\nguidelineHorizontalBottomHeightInPercents = " + guidelineHorizontalBottomHeightInPercents);
 
             float newTopGuidlineHeight = (guidelineHorizontalBottomHeightInPercents*100 - pyramidHeightInPercentsOfScreenHeight)/100;
-
-            Log.d("measurements", "\nnewTopGuidlineHeight % = " + newTopGuidlineHeight);
 
             guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guidelineHorizontalTop.getLayoutParams();
@@ -202,151 +180,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             appState.resetSteps();
         }
     }
-
-    private void measureDisksContainer() {
-
-
-        appState = AppState.getInstance();
-        //calculate disks max sizes depending on screen size
-        //container_max_w and container_max_h in px
-
-        //int disksHeight;
-
-        ConstraintLayout parent = findViewById(R.id.game_activity_layout);
-        parent.post(new Runnable()
-        {
-            @Override
-            public void run() {
-                Guideline guidelineVerticalLeft = findViewById(R.id.guideline_vertical_left);
-
-                int container_max_w = guidelineVerticalLeft.getLeft(); //left screen edge to guideline_vertical_left
-                Log.i("measureDisksContainer",  "width: " + container_max_w+ "");
-                //appState.setContainer_max_w(container_max_w);
-
-                Guideline guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
-                Guideline guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
-
-                int container_max_h; //guideline_horizontal_bottom to guideline_horizontal_top
-                container_max_h = Math.abs(guidelineHorizontalBottom.getTop() - guidelineHorizontalTop.getTop());
-                //appState.setContainer_max_h(container_max_h);
-                Log.i("measureDisksContainer",  "height: " + container_max_h);
-
-
-
-                GameAttributes ga = new GameAttributes();
-
-                //biggest disk of the level w and h in px
-                int level = appState.currentLevel;
-
-                Drawable biggestDiskOnLevel = getResources().getDrawable(ga.disksImgResourcesList[level-1]);
-                int biggestDiskOnLevelH = biggestDiskOnLevel.getIntrinsicHeight();
-                int biggestDiskOnLevelW = biggestDiskOnLevel.getIntrinsicWidth();
-                Log.d("measureDisksContainer", "biggestDiskOnLevel w and h: " + biggestDiskOnLevelW + ", " + biggestDiskOnLevelH);
-
-                Log.d("measureDisksContainer", "Container_max_w = " + container_max_w +
-                        "\nContainer_max_h = " + container_max_h +
-                        "\nlevel "+ level);
-
-                int disksHeight;
-
-                if(container_max_w/(container_max_h/level) >=
-                        biggestDiskOnLevelW/biggestDiskOnLevelH)
-                {
-                    disksHeight = biggestDiskOnLevelW * biggestDiskOnLevelH / biggestDiskOnLevelW;
-                    biggestDiskOnLevelW = container_max_w;
-
-                    Log.d("measureDisksContainer", "\ndisksHeight: " + disksHeight
-                            + "\nbiggestW: " + biggestDiskOnLevelW);
-                }
-
-                else
-                {
-                    disksHeight = container_max_h/level;
-                    biggestDiskOnLevelW = disksHeight * biggestDiskOnLevelW / biggestDiskOnLevelH;
-
-
-                    Log.d("measureDisksContainer", "\ndisksHeight: " + disksHeight
-                            + "\nbiggestW: " + biggestDiskOnLevelW);
-                }
-
-
-
-
-
-
-                for (int i = appState.getCurrentLevel()-1; i >= 0; i--) {
-                    //create an text view of a disk, starting with the biggest
-
-                    final ImageView imageDisk = new ImageView(getApplicationContext());
-                    imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
-
-                    int maxDiscHeightInPx = disksHeight; //48 is a toolbar height
-
-                    Drawable currentDisk = getResources().getDrawable(ga.disksImgResourcesList[i]);
-                    int currentDiskIntrH = currentDisk.getIntrinsicHeight();
-                    int currentDiskIntrW = currentDisk.getIntrinsicWidth();
-
-
-                    int maxDiscWidthInPx = disksHeight * currentDiskIntrW / currentDiskIntrH; //16 is a left margin
-                    Log.d("updateDiskPyramid", "\nmaxDiscWidthInPx = " + maxDiscWidthInPx
-                            + "\nmaxDiscHeightInPx = " + maxDiscHeightInPx);
-
-
-                    LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
-                    if(i == appState.getCurrentLevel()-1) { diskParams.setMargins(0,-5,0,0); }
-                    else {diskParams.setMargins(0,-10,0,0);}
-                    imageDisk.setLayoutParams(diskParams);
-
-                    imageDisk.setTag(""+i);
-
-                    imageDisk.setOnTouchListener(new MyTouchListener());
-
-                    //add view to the pole
-                    startPole.addView(imageDisk,0);
-
-//            targetSlot1 = findViewById(R.id.target_1_imageview);
-//            targetSlot2 = findViewById(R.id.target_2_imageview);
-//
-/////////////////
-//            ConstraintLayout layout = (ConstraintLayout) targetSlot1.getParent(); //??
-//            ConstraintLayout.LayoutParams targetParams =
-//                    (ConstraintLayout.LayoutParams) targetSlot1.getLayoutParams();
-//            //targetParams.leftToLeft(guidelineVerticalRight);
-//            targetParams = new ConstraintLayout.LayoutParams(3*maxDiscHeightInPx/2, 3*maxDiscHeightInPx/2);
-//            targetSlot1.setLayoutParams(targetParams);
-
-
-                    //"measure" the pyramid and adjust target fruit height
-                    int pyramidHeight = maxDiscHeightInPx * appState.getCurrentLevel();
-                    int pyramidHeightInPercentsOfScreenHeight = 100*pyramidHeight/appState.getScreenHeight();
-
-                    Log.d("measurements", "\nscreenHeight in px = " + appState.getScreenHeight());
-                    Log.d("measurements", "\npyramidHeight in px = " + pyramidHeight
-                            + "\npyramidHeightInPercentsOfScreenHeight = " + pyramidHeightInPercentsOfScreenHeight);
-
-                    guidelineHorizontalBottom = findViewById(R.id.guideline_horizontal_bottom);
-                    ConstraintLayout.LayoutParams guidelineHorizontalBottomParams =
-                            (ConstraintLayout.LayoutParams) guidelineHorizontalBottom.getLayoutParams();
-
-
-                    float guidelineHorizontalBottomHeightInPercents = guidelineHorizontalBottomParams.guidePercent;
-                    Log.d("measurements", "\nguidelineHorizontalBottomHeightInPercents = " + guidelineHorizontalBottomHeightInPercents);
-
-                    float newTopGuidlineHeight = (guidelineHorizontalBottomHeightInPercents*100 - pyramidHeightInPercentsOfScreenHeight)/100;
-
-                    Log.d("measurements", "\nnewTopGuidlineHeight % = " + newTopGuidlineHeight);
-
-//            guidelineHorizontalTop = findViewById(R.id.guideline_horizontal_top);
-//            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) guidelineHorizontalTop.getLayoutParams();
-//            params.guidePercent = newTopGuidlineHeight; // 45% // range: 0 <-> 1
-//            guidelineHorizontalTop.setLayoutParams(params);
-
-                    appState.resetSteps();
-                }
-            }
-        });
-    }
-
 
     private void victoryAction()
     {
@@ -421,8 +254,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         LinearLayout playAgainButton = view.findViewById(R.id.play_again_button_linearlayout);
 
-
-
         playAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -456,8 +287,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         int a = appState.stepsTaken;
         int b = getBestResult();
-
-        Log.d("buttonDialog", "steps taken = " + a + "; best = " + b);
 
         movesTextview.setText(appState.stepsTaken + "");
         bestMovesTextview.setText(getResources().getString(R.string.best_result_in_victory_dialog)
@@ -511,11 +340,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         {
             uhahSoundMediaPlayer.start();
         }
-
-        //Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        // Vibrate for 400 milliseconds
-        //v.vibrate(100);
-        //todo ability to turn off vibration or turn it off with sound
     }
 
     private void discDroppedSound() {
@@ -530,19 +354,16 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         boolean isSmallerOnTop;
         LinearLayout acceptingContainer = (LinearLayout) view;
         //count views in acceptingContainer
-        Log.d("draggedIsSmallerThanTop", "num of views: " + acceptingContainer.getChildCount());
 
         //get tag of a top view
         String tagOfTopView = "";
         tagOfTopView = tagOfTopView + acceptingContainer.getChildAt(0).getTag();
         int topViewValue = Integer.valueOf(tagOfTopView);
-        Log.d("draggedIsSmallerThanTop", "tag of a top view: " + tagOfTopView);
 
         //get tag of dragged disk
         View v = (View) event.getLocalState();
         String tagOfDraggedDisk = v.getTag().toString();
         int draggedViewValue = Integer.valueOf(tagOfDraggedDisk);
-        Log.d("draggedIsSmallerThanTop", "tag of a dargged view: " + tagOfDraggedDisk);
 
         if(draggedViewValue < topViewValue)
         {
@@ -603,7 +424,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 //        createTower();
 //
 //        updateStepsCounterTextview();
-//        //todo
         restartActivity();
     }
 
@@ -620,13 +440,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
     }
 
-
-
-    private void clearPoles() {
-        startPole.removeAllViews();
-        helpPole.removeAllViews();
-        targetPole.removeAllViews();
-    }
 
     @Override
     public boolean onDrag(View view, DragEvent event) {
@@ -693,8 +506,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                 }
                 else
                 {
-                    Log.d("ACTION_DROP", "last text: " + "empty");
-                    Log.d("ACTION_DROP", "dragged text: " + dragData);
                     //Add the dragged view
                     owner.addView(draggedView, 0);
                 }
@@ -726,7 +537,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             // An unknown action type was received.
             default:
             {
-                Log.e("DragDrop Example", "Unknown action type received by OnDragListener.");
                 break;
             }
         }
@@ -736,7 +546,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
     public void saveResult() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
 
         switch (appState.getCurrentLevel()) {
             case 3:
@@ -779,7 +588,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         }
 
         editor.apply();
-        //Toast.makeText(this, "Data saved", Toast.LENGTH_SHORT).show();
     }
 
     public int getBestResult() {

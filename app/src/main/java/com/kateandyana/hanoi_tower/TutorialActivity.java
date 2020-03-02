@@ -1,4 +1,4 @@
-package com.example.castomtoolbar;
+package com.kateandyana.hanoi_tower;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
@@ -9,7 +9,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class RulesActivity extends AppCompatActivity {
+import com.kateandyana.hanoi_tower.R;
+
+public class TutorialActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -29,18 +30,10 @@ public class RulesActivity extends AppCompatActivity {
     private ImageView[] dotsImg;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    //private PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Checking for first time launch - before calling setContentView()
-//        prefManager = new PrefManager(this);
-//        if (!prefManager.isFirstTimeLaunch()) {
-//            launchHomeScreen();
-//            finish();
-//        }
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
@@ -96,7 +89,6 @@ public class RulesActivity extends AppCompatActivity {
 
     private void addBottomDots(int currentPage) {
         int numberOfTutorialPages = layouts.length;
-        Log.d("addBottomDots", "numberOfTutorialPages = " + numberOfTutorialPages);
 
         dots = new TextView[numberOfTutorialPages];
         dotsImg = new ImageView[numberOfTutorialPages];
@@ -106,7 +98,6 @@ public class RulesActivity extends AppCompatActivity {
 
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
-
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 dotsImg[i] = new ImageView(this);
@@ -130,9 +121,6 @@ public class RulesActivity extends AppCompatActivity {
             }
         }
 
-//        if (dots.length > 0)
-//            dots[currentPage].setTextColor(colorsActive[currentPage]);
-
         if (dotsImg.length > 0)
         {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -150,14 +138,6 @@ public class RulesActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-
-        //todo now user always exit to a main page.
-        // Should exit to the activity from which help button was pressed.
-        // 1) startActivityForResult ?
-        //prefManager.setFirstTimeLaunch(false);
-//        startActivity(new Intent(RulesActivity.this, MainActivity.class));
-//        finish();
-
         getOnBackPressedDispatcher();
         finish();
     }
