@@ -31,4 +31,7 @@
 
     <color name="dim_background">#80000000</color>
 
+    <color name="victory_dialog_green">#306D18</color>
+    <color name="victory_dialog_gray">#454545</color>
+
 </resources>

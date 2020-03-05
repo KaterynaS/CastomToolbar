@@ -11,6 +11,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -25,8 +28,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Guideline;
-
-import com.kateandyana.hanoi_tower.R;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -239,7 +240,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         lp.width = (int) dialogWidth;
         lp.height = (int) dialogHeight;
 
-        TextView movesTextview = view.findViewById(R.id.number_of_moves_textview);
         TextView bestMovesTextview = view.findViewById(R.id.best_result_textview);
         TextView bestPossibleResultTextView = view.findViewById(R.id.best_possible_result_textview);
 
@@ -286,17 +286,42 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
 
-        int a = appState.stepsTaken;
-        int b = getBestResult();
+        int bestResult = getBestResult();
 
-        movesTextview.setText(appState.stepsTaken + "");
         bestMovesTextview.setText(getResources().getString(R.string.best_result_in_victory_dialog)
-                + " " + b + " " +  getResources().getString(R.string.moves_in_victory_dialog));
+                + " " + bestResult + " " +  getResources().getString(R.string.moves_in_victory_dialog));
 
 
         int bestPossibleResult = attributes.bestPossibleResults[appState.getCurrentLevel()];
         bestPossibleResultTextView.setText(getResources().getString(R.string.best_possible_result_in_victory_dialog)
                 + " " + bestPossibleResult + " " + getResources().getString(R.string.moves_in_victory_dialog));
+
+
+
+
+        TextView youDidItInTextview = view.findViewById(R.id.you_did_it_in_textview);
+
+
+        int vdGreenColor = getResources().getColor(R.color.victory_dialog_green);
+        int vdGrayColor = getResources().getColor(R.color.victory_dialog_gray);
+
+
+        String part1 = getResources().getString(R.string.you_did_it_in_victory_dialog);
+        Spannable part1span = new SpannableString(part1);
+        part1span.setSpan(new ForegroundColorSpan(vdGrayColor), 0, part1span.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        youDidItInTextview.setText(part1span);
+
+        int stepsTaken = appState.stepsTaken;
+        Spannable steps = new SpannableString(" " + stepsTaken + " ");
+        steps.setSpan(new ForegroundColorSpan(vdGreenColor), 0, steps.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        youDidItInTextview.append(steps);
+
+        String b = getResources().getString(R.string.moves_in_victory_dialog);
+        Spannable movesString = new SpannableString(b);
+        movesString.setSpan(new ForegroundColorSpan(vdGrayColor), 0, movesString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        youDidItInTextview.append(movesString);
+
+        //number color #306D18
 
         appState.setCurrentLevel(currentLvl);
     }
