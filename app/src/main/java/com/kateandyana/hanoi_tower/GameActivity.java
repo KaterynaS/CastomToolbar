@@ -241,6 +241,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
         TextView movesTextview = view.findViewById(R.id.number_of_moves_textview);
         TextView bestMovesTextview = view.findViewById(R.id.best_result_textview);
+        TextView bestPossibleResultTextView = view.findViewById(R.id.best_possible_result_textview);
 
 
         TextView homeButton = view.findViewById(R.id.home_button_textview);
@@ -291,6 +292,11 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         movesTextview.setText(appState.stepsTaken + "");
         bestMovesTextview.setText(getResources().getString(R.string.best_result_in_victory_dialog)
                 + " " + b + " " +  getResources().getString(R.string.moves_in_victory_dialog));
+
+
+        int bestPossibleResult = attributes.bestPossibleResults[appState.getCurrentLevel()];
+        bestPossibleResultTextView.setText(getResources().getString(R.string.best_possible_result_in_victory_dialog)
+                + " " + bestPossibleResult + " " + getResources().getString(R.string.moves_in_victory_dialog));
 
         appState.setCurrentLevel(currentLvl);
     }

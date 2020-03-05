@@ -18,8 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_marginEnd="-1dp"
             android:layout_marginRight="-1dp"
-            android:layout_weight="8"
+            android:layout_weight="11"
             android:fontFamily="@font/ar_carter_font"
             android:gravity="center"
             android:paddingTop="6dp"
@@ -29,14 +30,14 @@
             app:autoSizeMaxTextSize="80sp"
             app:autoSizeMinTextSize="18sp"
             app:autoSizeStepGranularity="2sp"
-            app:autoSizeTextType="uniform"
-            android:layout_marginEnd="-1dp" />
-
+            app:autoSizeTextType="uniform" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="8"
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="-1dp"
+            android:layout_weight="9"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:paddingTop="6dp">
@@ -91,14 +92,31 @@
             android:id="@+id/best_result_textview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="-3dp"
             android:layout_weight="7"
             android:fontFamily="@font/ar_carter_font"
             android:gravity="center_horizontal"
-            android:paddingTop="6dp"
             android:text="@string/best_result_15_steps_in_victory_dialog"
             android:textColor="#306D18"
             app:autoSizeMaxTextSize="28sp"
             app:autoSizeMinTextSize="12sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform" />
+
+
+        <TextView
+            android:id="@+id/best_possible_result_textview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="-1dp"
+            android:layout_weight="5"
+            android:fontFamily="@font/ar_carter_font"
+            android:gravity="center_horizontal"
+            android:text="best possible result 0 moves"
+            app:autoSizeMaxTextSize="24sp"
+            app:autoSizeMinTextSize="10sp"
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform" />
 

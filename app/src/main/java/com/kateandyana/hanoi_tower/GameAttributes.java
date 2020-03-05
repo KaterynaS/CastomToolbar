@@ -6,6 +6,7 @@ public class GameAttributes {
 
     int[] disksImgResourcesList;
     int[] targetImgResourceList;
+    int[] bestPossibleResults;
 
     public GameAttributes() {
         disksImgResourcesList = new int[]{
@@ -21,6 +22,20 @@ public class GameAttributes {
                 R.drawable.treat_cloud_watermelon,
                 R.drawable.treat_cloud_fish
         };
+
+        bestPossibleResults = new int[]{
+                0,
+                1,
+                3,
+                7,
+                15,
+                31,
+                63,
+                127,
+                255,
+                511
+        };
+
     }
 
     public int getMaxLevel()

@@ -17,7 +17,7 @@
 
 
     <!-- victory dialog -->
-    <string name="best_result_in_victory_dialog">Best result:</string>
+    <string name="best_result_in_victory_dialog">Your best result:</string>
     <string name="moves_in_victory_dialog">moves</string>
     <string name="home_in_victory_dialog">Home</string>
     <string name="play_again_in_victory_dialog">Play again</string>
@@ -25,6 +25,8 @@
     <string name="best_result_15_steps_in_victory_dialog">best result 15 steps</string>
     <string name="you_did_it_in_victory_dialog">You did it in</string>
     <string name="you_won_victory_dialog">YOU WON!</string>
+    <string name="best_possible_result_in_victory_dialog">best possible result</string>
+
 
 
     <string name="logo_on_main">logo on main</string>
