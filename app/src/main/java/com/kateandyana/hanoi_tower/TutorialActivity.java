@@ -5,6 +5,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,10 +31,12 @@ public class TutorialActivity extends AppCompatActivity {
     private ImageView[] dotsImg;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    int launcherInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
@@ -41,6 +44,11 @@ public class TutorialActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_tutorial);
+
+        //todo this is getintent from launcher
+        Intent intent = getIntent();
+        launcherInt = intent.getIntExtra("fromLauncher", 0);
+
 
         viewPager = findViewById(R.id.view_pager);
         dotsLayout = findViewById(R.id.layoutDots);
@@ -138,7 +146,16 @@ public class TutorialActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        getOnBackPressedDispatcher();
+        if (launcherInt == 1)
+        {
+            Intent main = new Intent(this, MainActivity.class);
+            startActivity(main);
+        }
+        else
+        {
+            getOnBackPressedDispatcher();
+        }
+
         finish();
     }
 

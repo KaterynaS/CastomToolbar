@@ -3,13 +3,10 @@
     package="com.kateandyana.hanoi_tower"
     android:installLocation="preferExternal">
 
-
     <supports-screens
-        android:smallScreens="false"
         android:normalScreens="true"
-        android:xlargeScreens="false"
-    />
-
+        android:smallScreens="false"
+        android:xlargeScreens="false" />
 
     <application
         android:allowBackup="true"
@@ -20,25 +17,8 @@
         android:roundIcon="@drawable/logo_cir"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.kateandyana.hanoi_tower.TutorialActivity"
-            android:screenOrientation="landscape" >
+        <activity android:name=".LauncherActivity">
 
-            <intent-filter android:label="How to play hanoi tower">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http"
-                    android:host="www.kateandyana.com"
-                    android:pathPrefix="/hanoi_tower" />
-            </intent-filter>
-
-        </activity>
-        <activity
-            android:name="com.kateandyana.hanoi_tower.MainActivity"
-
-            android:label="Hanoi Tower"
-            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -46,13 +26,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.kateandyana.hanoi_tower.GameActivity"
-            android:label="Hanoi Tower Game"
-            android:parentActivityName="com.kateandyana.hanoi_tower.MainActivity"
-            android:screenOrientation="landscape" />
+            android:name=".TutorialActivity"
+            android:screenOrientation="landscape">
 
+            <intent-filter android:label="How to play hanoi tower">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="www.kateandyana.com"
+                    android:pathPrefix="/hanoi_tower"
+                    android:scheme="http" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name="com.kateandyana.hanoi_tower.ToolbarActivity"
+            android:name=".MainActivity"
+            android:label="Kittens Hanoi Tower"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="Kittens Hanoi Tower"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ToolbarActivity"
             android:screenOrientation="landscape"
             android:theme="@style/ToolbarTheme" />
 

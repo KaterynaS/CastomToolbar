@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hanoi Towers</string>
+    <string name="app_name">Kittens Hanoi Tower</string>
 
     <!-- tutorial -->
     <string name="next">NEXT</string>
@@ -26,7 +26,6 @@
     <string name="you_did_it_in_victory_dialog">You did it in</string>
     <string name="you_won_victory_dialog">YOU WON!</string>
     <string name="best_possible_result_in_victory_dialog">best possible result</string>
-
 
 
     <string name="logo_on_main">logo on main</string>

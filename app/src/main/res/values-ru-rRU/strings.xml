@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ханойские башни</string>
+    <string name="app_name">Ханойские котобашни</string>
     <string name="best_result_in_victory_dialog">Лучший результат:</string>
     <string name="choose_level">Выберите уровень</string>
     <string name="easy">легко</string>
@@ -14,9 +14,9 @@
     <string name="play_again_in_victory_dialog">Играть ещё</string>
     <string name="you_did_it_in_victory_dialog">"Вы сделали это за "</string>
     <string name="you_won_victory_dialog">ПОБЕДА!</string>
-    <string name="tutorial_text_1">Чтобы достать угощение перемещайте по одному ряду</string>
-    <string name="tutorial_text_2">Можно ставить только меньший ряд на больший</string>
-    <string name="tutorial_text_3">Постарайтесь достать угощение за минимум шагов</string>
+    <string name="tutorial_text_1">Чтобы достать угощение перемещайте по одному ряду котят</string>
+    <string name="tutorial_text_2">Можно ставить только меньший ряд котят на больший</string>
+    <string name="tutorial_text_3">Постарайтесь достать угощение сделав минимум перестановок</string>
     <string name="stage">подставка</string>
     <string name="logo_on_main">логотип</string>
     <string name="cloud_with_sign">тучка со знаком</string>
@@ -31,9 +31,9 @@
     <string name="target_stand_two">целевая платформа два</string>
     <string name="target_treat_one">цель один</string>
     <string name="target_treat_two">цель два</string>
-    <string name="tutorial_image_step_one">туториал слайд один</string>
-    <string name="tutorial_slide_three">туториал слайд три</string>
-    <string name="tutorial_slide_two">туториал слайд два</string>
+    <string name="tutorial_image_step_one">инструкция слайд один</string>
+    <string name="tutorial_slide_three">инструкция слайд три</string>
+    <string name="tutorial_slide_two">инструкция слайд два</string>
     <string name="best_possible_result_in_victory_dialog">лучший возможный результат </string>
 
 </resources>

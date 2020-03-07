@@ -137,8 +137,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         for (int i = appState.getCurrentLevel()-1; i >= 0; i--) {
             //create an text view of a disk, starting with the biggest
 
-            //todo set target_1_imageview size as a disk height
-
             final ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
 
@@ -287,7 +285,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
         int bestResult = getBestResult();
-
         bestMovesTextview.setText(getResources().getString(R.string.best_result_in_victory_dialog)
                 + " " + bestResult + " " +  getResources().getString(R.string.moves_in_victory_dialog));
 
@@ -297,14 +294,10 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
                 + " " + bestPossibleResult + " " + getResources().getString(R.string.moves_in_victory_dialog));
 
 
-
-
         TextView youDidItInTextview = view.findViewById(R.id.you_did_it_in_textview);
-
 
         int vdGreenColor = getResources().getColor(R.color.victory_dialog_green);
         int vdGrayColor = getResources().getColor(R.color.victory_dialog_gray);
-
 
         String part1 = getResources().getString(R.string.you_did_it_in_victory_dialog);
         Spannable part1span = new SpannableString(part1);
@@ -320,8 +313,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
         Spannable movesString = new SpannableString(b);
         movesString.setSpan(new ForegroundColorSpan(vdGrayColor), 0, movesString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         youDidItInTextview.append(movesString);
-
-        //number color #306D18
 
         appState.setCurrentLevel(currentLvl);
     }
@@ -506,9 +497,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
             {
                 // Gets the item containing the dragged data
                 ClipData.Item item = event.getClipData().getItemAt(0);
-
-                // Gets the text data from the item.
-                String dragData = item.getText().toString();
 
                 //remove the dragged view
                 owner.removeView(draggedView);
