@@ -2,17 +2,18 @@ package com.kateandyana.hanoi_tower;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import androidx.appcompat.widget.Toolbar;
-
-import com.kateandyana.hanoi_tower.R;
+import java.util.Random;
 
 public abstract class ToolbarActivity extends AppCompatActivity {
 
-    Toolbar toolbar;
     Menu mainMenu;
     int menuResourceID;
 
@@ -32,6 +33,7 @@ public abstract class ToolbarActivity extends AppCompatActivity {
             if(appState.isSoundOn()) { soundMenuItem.setIcon(R.drawable.ico_music_90x90); }
             else { soundMenuItem.setIcon(R.drawable.ico_music_mute_90x90); }
         }
+
         return true;
     }
 
@@ -87,4 +89,13 @@ public abstract class ToolbarActivity extends AppCompatActivity {
             soundMenuItem.setIcon(R.drawable.ico_music_mute_90x90);
         }
     }
+
+
+
+
 }
+
+
+
+
+

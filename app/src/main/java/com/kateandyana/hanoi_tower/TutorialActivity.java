@@ -19,10 +19,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import com.kateandyana.hanoi_tower.R;
 
-public class TutorialActivity extends AppCompatActivity {
+public class TutorialActivity extends ToolbarActivity{
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -33,17 +34,27 @@ public class TutorialActivity extends AppCompatActivity {
     private Button btnSkip, btnNext;
     int launcherInt = 0;
 
+    Toolbar toolbarTutorial;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
+//        // Making notification bar transparent
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+//        }
 
         setContentView(R.layout.activity_tutorial);
+
+
+        toolbarTutorial = findViewById(R.id.toolbar_widget).findViewById(R.id.toolbar_widget);
+        setSupportActionBar(toolbarTutorial);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowHomeEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
 
         //todo this is getintent from launcher
         Intent intent = getIntent();
@@ -67,7 +78,7 @@ public class TutorialActivity extends AppCompatActivity {
         addBottomDots(0);
 
         // making notification bar transparent
-        changeStatusBarColor();
+        //changeStatusBarColor();
 
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
@@ -190,13 +201,22 @@ public class TutorialActivity extends AppCompatActivity {
     };
 
     // Making notification bar transparent
-
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+    }
+
+    @Override
+    public int getMenuResourceID() {
+        return R.menu.menu_tutorial;
+    }
+
+    @Override
+    public void restartGame() {
+
     }
 
     /**

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/victory_dialog_v2">
+
+
+        <!-- you_won_textview -->
+        <TextView
+            android:id="@+id/you_won_textview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/ar_carter_font"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:text="@string/you_won_victory_dialog"
+            android:textColor="#DD1515"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="60sp"
+            app:autoSizeMinTextSize="36sp"
+            app:autoSizeStepGranularity="2sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="@id/you_won_bottom_guidline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- you_did_it_in_textview -->
+        <TextView
+            android:id="@+id/you_did_it_in_textview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/ar_carter_font"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/you_did_it_in_victory_dialog"
+            app:autoSizeMaxTextSize="50sp"
+            app:autoSizeMinTextSize="30sp"
+            app:autoSizeStepGranularity="5sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/you_did_it_in_moves_bottom_guidline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/you_won_bottom_guidline" />
+
+        <!-- best_result_textview -->
+        <TextView
+            android:id="@+id/your_best_result_textview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/ar_carter_font"
+            android:gravity="center"
+            android:text="@string/best_result_15_steps_in_victory_dialog"
+            android:textColor="#306D18"
+            app:autoSizeMaxTextSize="40sp"
+            app:autoSizeMinTextSize="24sp"
+            app:autoSizeStepGranularity="3sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/your_best_result_bottom_guidline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/you_did_it_in_moves_bottom_guidline" />
+
+        <!-- best_possible_result_textview -->
+        <TextView
+            android:id="@+id/best_possible_result_textview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/arial"
+            android:gravity="center"
+            android:text="best possible result 6 moves"
+            app:autoSizeMaxTextSize="11sp"
+            app:autoSizeMinTextSize="7sp"
+            app:autoSizeStepGranularity="1sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/buttons_top_guidline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/your_best_result_bottom_guidline" />
+
+        <!-- buttons_container_linearlayout -->
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/buttons_top_guidline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.74" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/your_best_result_bottom_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/you_did_it_in_moves_bottom_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/you_won_bottom_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.28" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/home_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.335" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/play_again_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.445" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/next_level_left_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.555" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/next_level_right_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.665" />
+
+        <ImageView
+            android:id="@+id/new_home_button_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foregroundGravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/play_again_left_guideline"
+            app:layout_constraintStart_toStartOf="@+id/home_left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline"
+            app:srcCompat="@drawable/victory_dialog_home_button_selectable_bcg" />
+
+        <ImageView
+            android:id="@+id/new_play_again_button_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/next_level_left_guideline"
+            app:layout_constraintStart_toStartOf="@+id/play_again_left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline"
+            app:srcCompat="@drawable/victory_dialog_play_again_button_selectable_bcg" />
+
+        <ImageView
+            android:id="@+id/new_next_lvl_button_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/next_level_right_guideline"
+            app:layout_constraintStart_toStartOf="@+id/next_level_left_guideline"
+            app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline"
+            app:srcCompat="@drawable/victory_dialog_next_lvl_button_selectable_bcg" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

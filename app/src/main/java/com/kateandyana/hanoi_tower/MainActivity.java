@@ -13,6 +13,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.kateandyana.hanoi_tower.R;
 
+//TODO: rename castom to custom
+
+
 public class MainActivity extends ToolbarActivity {
 
     ImageButton playButton;
@@ -97,7 +100,7 @@ public class MainActivity extends ToolbarActivity {
 
     private void addDisk()
     {
-        if(currentNumberOfDisks < 7)
+        if(currentNumberOfDisks < 7) //TODO: introduce const
         {
             currentNumberOfDisks = currentNumberOfDisks + 1;
             updateDiskPyramid();
@@ -106,7 +109,7 @@ public class MainActivity extends ToolbarActivity {
 
     private void subtractDisk()
     {
-        if(currentNumberOfDisks > 3)
+        if(currentNumberOfDisks > 3) //TODO: introduce const, why 3, not 1?
         {
             currentNumberOfDisks = currentNumberOfDisks - 1;
             updateDiskPyramid();
@@ -115,6 +118,7 @@ public class MainActivity extends ToolbarActivity {
 
     private void updateDiskPyramid()
     {
+        // TODO: introduce const
         int maxDiscWidthInPx = (int) (appState.getScreenWidth()*0.55 - 16);
         int maxDiscHeightInPx = (int) (appState.getScreenHeight()*0.75 - 48)/7;
 
@@ -127,8 +131,9 @@ public class MainActivity extends ToolbarActivity {
 
             ImageView imageDisk = new ImageView(getApplicationContext());
             imageDisk.setImageDrawable(getResources().getDrawable(ga.disksImgResourcesList[i]));
-            imageDisk.setTag(""+i);
+            imageDisk.setTag(""+i); //TODO: String.valueOf(i)
 
+            //TODO: consts
             LinearLayout.LayoutParams diskParams = new LinearLayout.LayoutParams(maxDiscWidthInPx, maxDiscHeightInPx);
             diskParams.setMargins(0,-5,0,-3);
             imageDisk.setLayoutParams(diskParams);
