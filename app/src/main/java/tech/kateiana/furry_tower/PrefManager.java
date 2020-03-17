@@ -1,4 +1,4 @@
-package com.kateandyana.hanoi_tower;
+package tech.kateiana.furry_tower;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,6 @@ public class PrefManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     Context _context;
-
 
 
     // shared pref mode

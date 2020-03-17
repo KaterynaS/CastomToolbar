@@ -1,4 +1,4 @@
-package com.kateandyana.hanoi_tower;
+package tech.kateiana.furry_tower;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 

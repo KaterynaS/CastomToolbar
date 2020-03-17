@@ -1,6 +1,4 @@
-package com.kateandyana.hanoi_tower;
-
-import com.kateandyana.hanoi_tower.R;
+package tech.kateiana.furry_tower;
 
 public class GameAttributes {
 

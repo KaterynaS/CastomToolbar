@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ханойские котобашни</string>
+    <string name="app_name">Пушистая башня</string>
     <string name="best_result_in_victory_dialog">Лучший результат:</string>
     <string name="choose_level">Выберите уровень</string>
     <string name="easy">легко</string>
@@ -34,6 +34,7 @@
     <string name="tutorial_image_step_one">инструкция слайд один</string>
     <string name="tutorial_slide_three">инструкция слайд три</string>
     <string name="tutorial_slide_two">инструкция слайд два</string>
-    <string name="best_possible_result_in_victory_dialog">лучший возможный результат </string>
+    <string name="best_possible_result_in_victory_dialog">Лучший возможный результат </string>
+    <string name="best_possible_result_6_moves">Лучший возможный результат: 6 шагов</string>
 
 </resources>

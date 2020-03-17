@@ -12,11 +12,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/victory_dialog_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/victory_dialog_v2">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <!-- you_won_textview -->
@@ -36,8 +36,8 @@
             app:autoSizeStepGranularity="2sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="@id/you_won_bottom_guidline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/prases_right_guidline"
+            app:layout_constraintStart_toStartOf="@+id/prases_left_guidline"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!-- you_did_it_in_textview -->
@@ -54,8 +54,8 @@
             app:autoSizeStepGranularity="5sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/you_did_it_in_moves_bottom_guidline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/prases_right_guidline"
+            app:layout_constraintStart_toStartOf="@+id/prases_left_guidline"
             app:layout_constraintTop_toTopOf="@+id/you_won_bottom_guidline" />
 
         <!-- best_result_textview -->
@@ -72,8 +72,8 @@
             app:autoSizeStepGranularity="3sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/your_best_result_bottom_guidline"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/prases_right_guidline"
+            app:layout_constraintStart_toStartOf="@+id/prases_left_guidline"
             app:layout_constraintTop_toTopOf="@+id/you_did_it_in_moves_bottom_guidline" />
 
         <!-- best_possible_result_textview -->
@@ -89,9 +89,9 @@
             app:autoSizeStepGranularity="1sp"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toTopOf="@+id/buttons_top_guidline"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/prases_right_guidline"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/prases_left_guidline"
             app:layout_constraintTop_toTopOf="@+id/your_best_result_bottom_guidline" />
 
         <!-- buttons_container_linearlayout -->
@@ -129,28 +129,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.335" />
+            app:layout_constraintGuide_percent="0.4" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/play_again_left_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.445" />
+            app:layout_constraintGuide_percent="0.515" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/next_level_left_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.555" />
+            app:layout_constraintGuide_percent="0.63" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/next_level_right_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.665" />
+            app:layout_constraintGuide_percent="0.745" />
 
         <ImageView
             android:id="@+id/new_home_button_imageView"
@@ -182,6 +182,20 @@
             app:layout_constraintStart_toStartOf="@+id/next_level_left_guideline"
             app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline"
             app:srcCompat="@drawable/victory_dialog_next_lvl_button_selectable_bcg" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/prases_left_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.33" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/prases_right_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.79" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

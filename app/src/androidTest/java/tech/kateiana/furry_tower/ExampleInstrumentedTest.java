@@ -1,4 +1,4 @@
-package com.kateandyana.hanoi_tower;
+package tech.kateiana.furry_tower;
 
 import android.content.Context;
 

@@ -1,20 +1,14 @@
-package com.kateandyana.hanoi_tower;
+package tech.kateiana.furry_tower;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.Toolbar;
-
-import com.kateandyana.hanoi_tower.R;
-
-//TODO: rename castom to custom
-
 
 public class MainActivity extends ToolbarActivity {
 
@@ -33,6 +27,14 @@ public class MainActivity extends ToolbarActivity {
         super.onCreate(savedInstanceState);
 
         appState = AppState.getInstance();
+
+
+        if(appState.isSoundOn())
+        {
+            Intent intent = new Intent(this, MusicService.class);
+            startService(intent);
+            appState.setSoundOn();
+        }
 
         // Checking for first time launch - before calling setContentView()
         setContentView(R.layout.activity_main);

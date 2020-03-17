@@ -1,8 +1,8 @@
-package com.kateandyana.hanoi_tower;
+package tech.kateiana.furry_tower;
 
 public class AppState {
 
-    boolean soundOn = true;
+    private boolean isSoundOn = true;
     int currentLevel;
     int stepsTaken = 0;
     private int screenWidth;
@@ -42,15 +42,6 @@ public class AppState {
         this.currentLevel = currentLevel;
     }
 
-    public void turnSound()
-    {
-        soundOn = !soundOn;
-    }
-
-    public boolean isSoundOn() {
-        return soundOn;
-    }
-
     public int getScreenWidth() {
         return screenWidth;
     }
@@ -65,6 +56,18 @@ public class AppState {
 
     public void setScreenHeight(int screenHeight) {
         this.screenHeight = screenHeight;
+    }
+
+    public boolean isSoundOn() {
+        return isSoundOn;
+    }
+
+    public void setSoundOn() {
+        isSoundOn = true;
+    }
+
+    public void setSoundOff() {
+        isSoundOn = false;
     }
 
 }

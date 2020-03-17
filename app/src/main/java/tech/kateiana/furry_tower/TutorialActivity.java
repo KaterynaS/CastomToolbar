@@ -1,6 +1,5 @@
-package com.kateandyana.hanoi_tower;
+package tech.kateiana.furry_tower;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -20,8 +19,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
-
-import com.kateandyana.hanoi_tower.R;
 
 public class TutorialActivity extends ToolbarActivity{
 
