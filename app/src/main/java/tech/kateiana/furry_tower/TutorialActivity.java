@@ -33,10 +33,13 @@ public class TutorialActivity extends ToolbarActivity{
 
     Toolbar toolbarTutorial;
 
+    AppState appState;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        appState = AppState.getInstance();
 
 //        // Making notification bar transparent
 //        if (Build.VERSION.SDK_INT >= 21) {
@@ -45,13 +48,11 @@ public class TutorialActivity extends ToolbarActivity{
 
         setContentView(R.layout.activity_tutorial);
 
-
         toolbarTutorial = findViewById(R.id.toolbar_widget).findViewById(R.id.toolbar_widget);
         setSupportActionBar(toolbarTutorial);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-
 
         //todo this is getintent from launcher
         Intent intent = getIntent();
@@ -62,7 +63,6 @@ public class TutorialActivity extends ToolbarActivity{
         dotsLayout = findViewById(R.id.layoutDots);
         btnSkip = findViewById(R.id.btn_skip);
         btnNext = findViewById(R.id.btn_next);
-
 
         // layouts of welcome sliders
         layouts = new int[]{

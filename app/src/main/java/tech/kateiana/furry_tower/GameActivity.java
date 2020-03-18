@@ -96,7 +96,6 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
     public int[] measureScreen() {
 
-
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int screenHeightPixels = displayMetrics.heightPixels;
@@ -107,7 +106,7 @@ public class GameActivity extends ToolbarActivity implements View.OnDragListener
 
 
         dialogWidth = screenWidthPixels*7.5/10;
-        dialogHeight = screenHeightPixels*6/10;
+        dialogHeight = screenHeightPixels*5.7/10;
 
 
         int[] dialogWandH = new int[]{(int)dialogWidth, (int)dialogHeight};

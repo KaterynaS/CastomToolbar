@@ -9,14 +9,19 @@ public class CarefulMediaPlayer {
     final SharedPreferences sp;
     final MediaPlayer mp;
     public boolean isPlaying = false;
+    private static CarefulMediaPlayer instance;
 
-    //i did it - empty constructor
-    //public CarefulMediaPlayer(){}
 
 
     public CarefulMediaPlayer(final MediaPlayer mp, final MusicService ms) {
         sp = PreferenceManager.getDefaultSharedPreferences(ms.getApplicationContext());
         this.mp = mp;
+        instance = this;
+    }
+
+
+    public static CarefulMediaPlayer getInstance() {
+        return instance;
     }
 
     public void start() {

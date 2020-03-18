@@ -5,7 +5,298 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="tech.kateiana.furry_tower.AboutActivity"
-    android:background="#ffe396">
+    android:background="@color/about_background_color">
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/about_left_top_corner" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/about_left_bottom_corner" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/about_right_bottom_corner" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/about_us_bottom_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <TextView
+        android:id="@+id/about_us_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arial"
+        android:text="About Us"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/about_us_bottom_guidline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/buttons_top_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/site_bottom_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/text_left_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.39" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/text_right_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/person_one_bottom_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/person_two_bottom_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57" />
+
+    <TextView
+        android:id="@+id/kateiana_site_link_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:clickable="true"
+        android:text="https://kateiana.tech"
+        android:textColor="@color/link_color"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/site_bottom_guideline"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline"
+        app:layout_constraintTop_toTopOf="@+id/about_us_bottom_guidline" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/person_one_bottom_guidline"
+        app:layout_constraintEnd_toStartOf="@+id/text_left_guidline"
+        app:layout_constraintTop_toTopOf="@+id/site_bottom_guideline"
+        app:srcCompat="@drawable/about_programmer" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/person_two_bottom_guidline"
+        app:layout_constraintEnd_toStartOf="@+id/text_left_guidline"
+        app:layout_constraintTop_toTopOf="@+id/person_one_bottom_guidline"
+        app:srcCompat="@drawable/about_iana" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_top_guidline"
+        app:layout_constraintEnd_toStartOf="@+id/text_left_guidline"
+        app:layout_constraintTop_toTopOf="@+id/person_two_bottom_guidline"
+        app:srcCompat="@drawable/about_composer" />
+
+    <TextView
+        android:id="@+id/person_one_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/arial"
+        android:textColor="#1A1A1A"
+        android:text="Kate Sukhomlynova"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/person_one_bottom_guidline"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+    <TextView
+        android:id="@+id/person_one_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="@font/arial"
+        android:textColor="#1A1A1A"
+        android:text="Programmer"
+        app:layout_constraintBottom_toTopOf="@+id/person_one_name"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+
+    <TextView
+        android:id="@+id/person_two_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/arial"
+        android:textColor="#1A1A1A"
+        android:text="Iana Fedotova"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/person_two_bottom_guidline"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+    <TextView
+        android:id="@+id/person_two_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="@font/arial"
+        android:textColor="#1A1A1A"
+        android:text="Designer"
+        app:layout_constraintBottom_toTopOf="@+id/person_two_name"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+
+
+    <TextView
+        android:id="@+id/person_three_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="Composer"
+        android:fontFamily="@font/arial"
+        android:textColor="#1A1A1A"
+        app:layout_constraintBottom_toTopOf="@+id/person_three_name"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+
+    <TextView
+        android:id="@+id/person_three_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="@font/arial"
+        android:textColor="#1A1A1A"
+        android:text="David Fesliyan"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/music_site_link"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+    <TextView
+        android:id="@+id/music_site_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:fontFamily="@font/arial"
+        android:text="https://fesliyanstudios.com"
+        android:textColor="#1A1A1A"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons_top_guidline"
+        app:layout_constraintStart_toStartOf="@+id/text_left_guidline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/home_button_left_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/share_button_left_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rate_button_left_guidleine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.605" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_buttons_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.785" />
+
+    <ImageButton
+        android:id="@+id/home_button"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/share_button_left_guidline"
+        app:layout_constraintStart_toStartOf="@+id/home_button_left_guidline"
+        app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline"
+        app:srcCompat="@drawable/about_home_button_selectable_background" />
+
+    <Button
+        android:id="@+id/share_button"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="share"
+        android:textColor="@android:color/white"
+        android:background="@drawable/about_share_button_selectable_background"
+        app:layout_constraintEnd_toStartOf="@+id/rate_button_left_guidleine"
+        app:layout_constraintStart_toStartOf="@+id/share_button_left_guidline"
+        app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline" />
+
+    <Button
+        android:id="@+id/rate_button"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="rate"
+        android:textColor="@android:color/white"
+        android:background="@drawable/about_rate_button_selectable_background"
+        app:layout_constraintEnd_toStartOf="@+id/right_buttons_guidline"
+        app:layout_constraintStart_toStartOf="@+id/rate_button_left_guidleine"
+        app:layout_constraintTop_toTopOf="@+id/buttons_top_guidline" />
 
 
     <include

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#0000EE</color>
     <!-- Screens background color-->
 
     <!-- dots inactive colors -->
@@ -33,5 +33,10 @@
 
     <color name="victory_dialog_green">#306D18</color>
     <color name="victory_dialog_gray">#454545</color>
+
+
+    <color name="about_background_color">#ffe396</color>
+    <color name="link_color">#0000EE</color>
+
 
 </resources>
